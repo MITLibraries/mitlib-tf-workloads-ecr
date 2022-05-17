@@ -31,7 +31,7 @@ resource "aws_ecr_lifecycle_policy" "ppod" {
 
 ### Permissions to read and write to the ECR
 ### Each ECR has its own permissions policy
-  
+
 data "aws_iam_policy_document" "rw_ppod" {
   statement {
     actions = [

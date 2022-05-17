@@ -31,7 +31,7 @@ resource "aws_ecr_lifecycle_policy" "almahook" {
 
 ### Permissions to read and write to the ECR
 ### Each ECR has its own permissions policy
-  
+
 data "aws_iam_policy_document" "rw_almahook" {
   statement {
     actions = [
