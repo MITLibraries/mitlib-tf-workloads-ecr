@@ -23,7 +23,10 @@ Each file in this repository should correspond with a single app's ECR and relat
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| ecr\_beans | ./modules/ecr | n/a |
+| ecr\_kale | ./modules/ecr | n/a |
 
 ## Resources
 
