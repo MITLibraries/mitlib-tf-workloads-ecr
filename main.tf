@@ -13,7 +13,7 @@ terraform {
     workspaces {
       # In most cases there should be two tags set here: 
       # The short name of the repository and the name of the AWS OU
-      tags = ["", ""]
+      tags = ["workloads", "ecr"]
     }
   }
 }

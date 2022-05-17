@@ -1,36 +1,9 @@
-# mitlib-tf-template
+# mitlib-tf-workloads-ecr
+Each file in this repository should correspond with a single app's ECR and related resources. 
 
-Template for Terraform repos for MIT Libraries.
+### The login policy can be shared between each app, since its the same no matter what. 
 
-After deploying this, the following steps must be completed.
-
-1. Update the `terraform { }` block in `main.tf`. We now use the `cloud {}` block to link to workspaces in Terraform Cloud. The very first thing to do is set the correct tags in the `workspaces {}` block.
-1. Update `main.tf` to include any additional Terraform Provider(s).
-1. Update the `terraform { required_providers { } }` block in `versions.tf` to set the location and constraints on the additional providers.
-1. **Optional**: Update the `locals {}` block in `main.tf` to provide a project-id.
-1. Copy the `locals {}` block from the `deleteme.tf` file and paste it into each `.tf` file that will create named resources.
-1. Delete the `deleteme.tf` file.
-1. Delete the file tree below.
-
-## File Tree
-
-```bash
-.
-├── LICENSE
-├── README.md
-├── deleteme.tf
-├── docs
-│   └── adrs
-│       └── 0001-record-architecture-decisions.md
-├── main.tf
-├── modules
-│   └── README.md
-├── providers.tf
-├── tests
-│   └── README.md
-├── variables.tf
-└── versions.tf
-```
+## Probably we should create a module here to simplify ecr creation within this repo. 
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
