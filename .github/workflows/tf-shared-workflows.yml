@@ -1,0 +1,24 @@
+## One workflow to rule them all!
+## This single workflow will run the terraform-docs, checkov, and terraform validate
+## workflows in one fell swoop.
+
+name: Run Terraform Checks
+on:
+  push:
+    branches-ignore:
+      - 'main'
+    paths:
+      - '**/*.tf'
+
+jobs:
+  validate:
+    name: Validate Terraform
+    uses: mitlibraries/.github/.github/workflows/tf-validate-shared.yml@main
+
+  security-check:
+    name: Checkov Tests
+    uses: mitlibraries/.github/.github/workflows/tf-checkov-shared.yml@main
+
+  docs-update:
+    name: Update README
+    uses: mitlibraries/.github/.github/workflows/tf-docs-gen-shared.yml@main
