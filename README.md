@@ -1,9 +1,16 @@
-# mitlib-tf-workloads-ecr
-Each file in this repository should correspond with a single app's ECR and related resources. 
+# Centralized ECR Repository Creation
 
-### The login policy can be shared between each app, since its the same no matter what. 
+This repo builds the ECR (Elastic Container Registry) repositories for containers. Most of the heavy lifting is in an embedded module [modules/ecr/main.tf](./modules/ecr/main.tf). The [ecr_repos.tf](./ecr_repos.tf) file should have one module call per containerized app.
 
-## Probably we should create a module here to simplify ecr creation within this repo. 
+**The login policy can be shared between each app, since its the same no matter what.**
+
+## Dependencies
+
+The only dependency is the ARN of the OpenID Connect Provider (placed in Parameter Store by the [mitlib-tf-workloads-init](https://github.com/MITLibraries/mitlib-tf-workloads-init) repo).
+
+## Usage
+
+There is a tight relationship between ECR repositories created here and the associated application repositories in GitHub due to the use of OIDC in the GitHub Actions in those application repositories. Make sure to coordinate any new ECR repositories with the developers building the applications that will be published there.
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 

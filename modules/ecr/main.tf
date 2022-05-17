@@ -1,9 +1,10 @@
 ################################################################################
 ################################################################################
-# A repository in ECR to hold the almahook ECS image(s) along with a lifecycle 
+# Create the ECR repository to store the ECS image(s) along with a lifecycle 
 # policy.
 resource "aws_ecr_repository" "this" {
-  # checkov:skip=CKV_AWS_136: ADD REASON
+  #checkov:skip=CKV_AWS_51:We do not currently use releases for this, but may choose to turn this on in the future
+  #checkov:skip=CKV_AWS_136:We dont store any private information in our images, encyption is unncessary
   name = "${var.repo_name}-${var.environment}"
   image_scanning_configuration {
     scan_on_push = true
@@ -34,11 +35,9 @@ resource "aws_ecr_lifecycle_policy" "this" {
   })
 }
 
-
-### Permissions to read and write to the ECR
-### Each ECR has its own permissions policy
+### Read-write permissions ECR repository
 data "aws_iam_policy_document" "rw_this" {
-  # checkov:skip=CKV_AWS_111: ADD REASON
+  #checkov:skip=CKV_AWS_111:This policy needs unconstrained CreateRepository privileges
   statement {
     actions = [
       "ecr:CreateRepository",
@@ -65,14 +64,13 @@ data "aws_iam_policy_document" "rw_this" {
   }
 }
 
-
-
 resource "aws_iam_policy" "rw_this" {
   name        = "${var.repo_name}-ecr-rw-${var.environment}"
   description = "policy to allow read/write into ${var.repo_name} ECR"
   policy      = data.aws_iam_policy_document.rw_this.json
-}
 
+  tags = var.tags
+}
 
 # The trust policy that allows GitHub Actions OIDC-based connections from the 
 # repository. The definition is explicitly linked to the name of the GitHub repo. 
@@ -100,6 +98,8 @@ data "aws_iam_policy_document" "gh_trust" {
 resource "aws_iam_role" "gha_this" {
   name               = "${var.repo_name}-gha-${var.environment}"
   assume_role_policy = data.aws_iam_policy_document.gh_trust.json
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "gha_ecr_rw" {

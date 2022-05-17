@@ -19,7 +19,7 @@ provider "aws" {
       environment  = var.environment
       ou           = var.ou
       terraform    = "true"
-      infra-repo   = "mitlib-tf-${var.name}"
+      infra-repo   = "mitlib-tf-workloads-${var.name}"
       contains-pii = "false"
     }
   }
