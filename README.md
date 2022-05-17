@@ -30,10 +30,7 @@ There is a tight relationship between ECR repositories created here and the asso
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| ecr\_beans | ./modules/ecr | n/a |
-| ecr\_kale | ./modules/ecr | n/a |
+No modules.
 
 ## Resources
 
