@@ -1,7 +1,6 @@
 ### This policy can be shared by any role that needs a login policy attached.
 ### We set it up once for use in all apps ECR's
 
-
 data "aws_iam_policy_document" "login" {
   statement {
     sid     = "ECRGetAuthorizationToken"
