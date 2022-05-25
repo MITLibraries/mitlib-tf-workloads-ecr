@@ -35,7 +35,11 @@ The "app-repo" tag should correspond with the name of the repo that contains the
 | Name | Source | Version |
 |------|--------|---------|
 | ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
+| ecr\_mario | ./modules/ecr | n/a |
+| ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
+| ecr\_timdex\_lambdas | ./modules/ecr | n/a |
+| ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 
 ## Resources
 
