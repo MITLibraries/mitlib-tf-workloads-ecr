@@ -12,6 +12,8 @@ The only dependency is the ARN of the OpenID Connect Provider (placed in Paramet
 
 There is a tight relationship between ECR repositories created here and the associated application repositories in GitHub due to the use of OIDC in the GitHub Actions in those application repositories. Make sure to coordinate any new ECR repositories with the developers building the applications that will be published there.
 
+The "app-repo" tag should correspond with the name of the repo that contains the code that is compiled and saved in the ECR, or a combination of infrastructure and app repo names if multiple ECR's are needed in the same infrastructure project. 
+
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
 <!-- BEGIN_TF_DOCS -->
@@ -33,7 +35,11 @@ There is a tight relationship between ECR repositories created here and the asso
 | Name | Source | Version |
 |------|--------|---------|
 | ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
+| ecr\_mario | ./modules/ecr | n/a |
+| ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
+| ecr\_timdex\_lambdas | ./modules/ecr | n/a |
+| ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 
 ## Resources
 
