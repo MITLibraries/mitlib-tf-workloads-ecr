@@ -2,7 +2,7 @@
 
 This repo builds the ECR (Elastic Container Registry) repositories for containers. Most of the heavy lifting is in an embedded module [modules/ecr/main.tf](./modules/ecr/main.tf). The [ecr_repos.tf](./ecr_repos.tf) file should have one module call per containerized app.
 
-**The login policy can be shared between each app, since its the same no matter what.**
+**The login policy can be shared between each app, since it's the same no matter what.**
 
 ## Dependencies
 
@@ -12,7 +12,7 @@ The only dependency is the ARN of the OpenID Connect Provider (placed in Paramet
 
 There is a tight relationship between ECR repositories created here and the associated application repositories in GitHub due to the use of OIDC in the GitHub Actions in those application repositories. Make sure to coordinate any new ECR repositories with the developers building the applications that will be published there.
 
-The "app-repo" tag should correspond with the name of the repo that contains the code that is compiled and saved in the ECR, or a combination of infrastructure and app repo names if multiple ECR's are needed in the same infrastructure project. 
+The "app-repo" tag should correspond with the name of the repo that contains the code that is compiled and saved in the ECR, or a combination of infrastructure and app repo names if multiple ECR's are needed in the same infrastructure project.
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
