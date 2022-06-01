@@ -14,6 +14,7 @@ There is a tight relationship between ECR repositories created here and the asso
 
 The "app-repo" tag should correspond with the name of the repo that contains the code that is compiled and saved in the ECR, or a combination of infrastructure and app repo names if multiple ECR's are needed in the same infrastructure project.
 
+
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
 <!-- BEGIN_TF_DOCS -->
