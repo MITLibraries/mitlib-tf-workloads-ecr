@@ -1,36 +1,19 @@
-# mitlib-tf-template
+# Centralized ECR Repository Creation
 
-Template for Terraform repos for MIT Libraries.
+This repo builds the ECR (Elastic Container Registry) repositories for containers. Most of the heavy lifting is in an embedded module [modules/ecr/main.tf](./modules/ecr/main.tf). The [ecr_repos.tf](./ecr_repos.tf) file should have one module call per containerized app.
 
-After deploying this, the following steps must be completed.
+**The login policy can be shared between each app, since it's the same no matter what.**
 
-1. Update the `terraform { }` block in `main.tf`. We now use the `cloud {}` block to link to workspaces in Terraform Cloud. The very first thing to do is set the correct tags in the `workspaces {}` block.
-1. Update `main.tf` to include any additional Terraform Provider(s).
-1. Update the `terraform { required_providers { } }` block in `versions.tf` to set the location and constraints on the additional providers.
-1. **Optional**: Update the `locals {}` block in `main.tf` to provide a project-id.
-1. Copy the `locals {}` block from the `deleteme.tf` file and paste it into each `.tf` file that will create named resources.
-1. Delete the `deleteme.tf` file.
-1. Delete the file tree below.
+## Dependencies
 
-## File Tree
+The only dependency is the ARN of the OpenID Connect Provider (placed in Parameter Store by the [mitlib-tf-workloads-init](https://github.com/MITLibraries/mitlib-tf-workloads-init) repo).
 
-```bash
-.
-├── LICENSE
-├── README.md
-├── deleteme.tf
-├── docs
-│   └── adrs
-│       └── 0001-record-architecture-decisions.md
-├── main.tf
-├── modules
-│   └── README.md
-├── providers.tf
-├── tests
-│   └── README.md
-├── variables.tf
-└── versions.tf
-```
+## Usage
+
+There is a tight relationship between ECR repositories created here and the associated application repositories in GitHub due to the use of OIDC in the GitHub Actions in those application repositories. Make sure to coordinate any new ECR repositories with the developers building the applications that will be published there.
+
+The "app-repo" tag should correspond with the name of the repo that contains the code that is compiled and saved in the ECR, or a combination of infrastructure and app repo names if multiple ECR's are needed in the same infrastructure project.
+
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -44,15 +27,28 @@ After deploying this, the following steps must be completed.
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| aws | 3.75.1 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
+| ecr\_mario | ./modules/ecr | n/a |
+| ecr\_oaiharvester | ./modules/ecr | n/a |
+| ecr\_ppod | ./modules/ecr | n/a |
+| ecr\_timdex\_lambdas | ./modules/ecr | n/a |
+| ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_iam_policy.login](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy_document.login](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_ssm_parameter.oidc_arn](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
