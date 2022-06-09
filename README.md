@@ -65,5 +65,18 @@ The "app-repo" tag should correspond with the name of the repo that contains the
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| almahook\_dev\_build\_workflow | Full contents of the dev-build.yml for the alma-webhook-lambdas repo |
+| almahook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
+| almahook\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
+| almahook\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
+| ppod\_dev\_build\_workflow | Full contents of the dev-build.yml for the ppod repo |
+| ppod\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
+| ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
+| ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
+| timdex\_lambdas\_dev\_build\_workflow | Full contents of the dev-build.yml for the ppod repo |
+| timdex\_lambdas\_lambdas\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
+| timdex\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
+| timdex\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
 <!-- END_TF_DOCS -->

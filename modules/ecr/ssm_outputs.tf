@@ -1,5 +1,5 @@
 
-### Outputs
+### SSM_Outputs
 # ecr repository_name
 # Type:string datatype:text format:string
 resource "aws_ssm_parameter" "ecr_repository_name" {
