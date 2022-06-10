@@ -1,4 +1,4 @@
-### This is the Terraform-generated prod-promote.yml workflow for the ${ecr_name} app repository ###
+### This is the Terraform-generated prod-promote.yml workflow for the ${ecr} app repository ###
 name: Prod Promote Fargate Container
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     name: Prod Promote Fargate Container
-    uses: mitlibraries/.github/.github/workflows/fargate-shared-promote-prod.yml@container-flows
+    uses: mitlibraries/.github/.github/workflows/fargate-shared-promote-prod.yml@main
     secrets: inherit
     with:
       AWS_REGION: "${region}"

@@ -55,11 +55,11 @@ output "ppod_stage_build_workflow" {
 # Outputs after promotion to prod
 output "ppod_prod_promote_workflow" {
   value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/lambda-prod-promote.tpl", {
-    region   = var.aws_region
-    region   = var.aws_region
-    role     = module.ecr_ppod.gha_role
-    ecr      = module.ecr_ppod.repository_name
-    function = local.ecr_ppod_function_name
+    region     = var.aws_region
+    role_stage = "${module.ecr_ppod.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_ppod.repo_name}-gha-prod"
+    ecr        = module.ecr_ppod.repository_name
+    function   = local.ecr_ppod_function_name
     }
   )
   description = "Full contents of the prod-promote.yml for the ppod repo"

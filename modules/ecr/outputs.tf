@@ -22,3 +22,10 @@ output "gha_role" {
   value       = aws_iam_role.gha_this.name
   sensitive   = false
 }
+
+# pass back the repo_name that was passed in to the module
+output "repo_name" {
+  description = "The repo_name that was passed in to the module for naming purposes"
+  value       = var.repo_name
+  sensitive   = false
+}
