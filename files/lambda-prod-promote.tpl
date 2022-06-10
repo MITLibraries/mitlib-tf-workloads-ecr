@@ -16,3 +16,4 @@ jobs:
       GHA_ROLE_PROD: ${role_prod}
       ECR: "${ecr}"
       FUNCTION: "${function}"
+ 
