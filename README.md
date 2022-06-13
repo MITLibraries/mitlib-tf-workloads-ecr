@@ -1,6 +1,6 @@
 # Centralized ECR Repository Creation
 
-This repo builds the ECR (Elastic Container Registry) repositories for containers. Most of the heavy lifting is in an embedded module [modules/ecr/main.tf](./modules/ecr/main.tf). The [ecr_repos.tf](./ecr_repos.tf) file should have one module call per containerized app.
+This repo builds the ECR (Elastic Container Registry) repositories for containers. Most of the heavy lifting is in an embedded module [modules/ecr/main.tf](./modules/ecr/main.tf).
 
 **The login policy can be shared between each app, since it's the same no matter what.**
 
@@ -14,6 +14,18 @@ There is a tight relationship between ECR repositories created here and the asso
 
 The "app-repo" tag should correspond with the name of the repo that contains the code that is compiled and saved in the ECR, or a combination of infrastructure and app repo names if multiple ECR's are needed in the same infrastructure project.
 
+For each new ECR repository (or linked collection of ECR repositories), create a new `..._ecr.tf` file that contains
+
+* at least one module call to the embedded `ecr` module to actually create the ECR
+* at least one set of four outputs (four outputs per ECR)
+  * a Makefile
+  * a dev_build caller workflow
+  * a stage_build caller workflow
+  * a prod_promote caller workflow
+
+The [ppod_ecr.tf](./ppod_ecr.tf) is a good example of a single ECR repository for a Lambda function build around a containerized app. The [timdex_ecrs.tf](./timdex_ecrs.tf) is a good example of a collection of ECR repositories all linked to one project (and there are both Fargate-linked ECRs and Lambda-linked ECRs in that file).
+
+**Note**: For Lambda function ECRs, it is imperative that the Infra engineer coordinates with the software engineer to determine the name of the Lambda function as part of the creation of the ECR by this repository.
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -65,5 +77,30 @@ The "app-repo" tag should correspond with the name of the repo that contains the
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| alma\_webhook\_lambdas\_dev\_build\_workflow | Full contents of the dev-build.yml for the alma-webhook-lambdas repo |
+| alma\_webhook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
+| alma\_webhook\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
+| alma\_webhook\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
+| mario\_dev\_build\_workflow | Full contents of the dev-build.yml for the mario repo |
+| mario\_makefile | Full contents of the Makefile for the mario repo (allows devs to push to Dev account only) |
+| mario\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the mario repo |
+| mario\_stage\_build\_workflow | Full contents of the stage-build.yml for the mario repo |
+| oaiharvester\_dev\_build\_workflow | Full contents of the dev-build.yml for the oaiharvester repo |
+| oaiharvester\_makefile | Full contents of the Makefile for the oaiharvester repo (allows devs to push to Dev account only) |
+| oaiharvester\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the oaiharvester repo |
+| oaiharvester\_stage\_build\_workflow | Full contents of the stage-build.yml for the oaiharvester repo |
+| ppod\_dev\_build\_workflow | Full contents of the dev-build.yml for the ppod repo |
+| ppod\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
+| ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
+| ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
+| timdex\_lambdas\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-pipeline-lambdas repo |
+| timdex\_lambdas\_makefile | Full contents of the Makefile for the timdex-pipeline-lambdas repo (allows devs to push to Dev account only) |
+| timdex\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-pipeline-lambdas repo |
+| timdex\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the timdex-pipeline-lambdas repo |
+| transmogrifier\_dev\_build\_workflow | Full contents of the dev-build.yml for the transmogrifier repo |
+| transmogrifier\_makefile | Full contents of the Makefile for the transmogrifier repo (allows devs to push to Dev account only) |
+| transmogrifier\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the transmogrifier repo |
+| transmogrifier\_stage\_build\_workflow | Full contents of the stage-build.yml for the transmogrifier repo |
 <!-- END_TF_DOCS -->
