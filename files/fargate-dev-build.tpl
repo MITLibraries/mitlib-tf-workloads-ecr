@@ -2,7 +2,7 @@
 name: Dev Build and Deploy Fargate Container
 on:
   workflow_dispatch:
-  push:
+  pull_request:
     branches:
       - main
     paths-ignore:
