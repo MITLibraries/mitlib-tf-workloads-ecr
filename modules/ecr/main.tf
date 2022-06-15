@@ -48,10 +48,15 @@ data "aws_iam_policy_document" "rw_this" {
   statement {
     actions = [
       "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
       "ecr:CompleteLayerUpload",
       "ecr:DeleteRepository",
       "ecr:DescribeImages",
+      "ecr:DescribeImageScanFindings",
       "ecr:DescribeRepositories",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:GetLifecyclePolicy",
+      "ecr:GetLifecyclePolicyPreview",
       "ecr:InitiateLayerUpload",
       "ecr:ListImages",
       "ecr:ListTagsForResource",
