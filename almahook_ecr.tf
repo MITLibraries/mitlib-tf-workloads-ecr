@@ -59,7 +59,8 @@ output "alma_webhook_lambdas_prod_promote_workflow" {
     region     = var.aws_region
     role_stage = "${module.ecr_alma_webhook_lambdas.repo_name}-gha-stage"
     role_prod  = "${module.ecr_alma_webhook_lambdas.repo_name}-gha-prod"
-    ecr        = module.ecr_alma_webhook_lambdas.repository_name
+    ecr_stage  = "${module.ecr_alma_webhook_lambdas.repo_name}-stage"
+    ecr_prod   = "${module.ecr_alma_webhook_lambdas.repo_name}-prod"
     function   = local.ecr_alma_webhook_lambdas_function_name
     }
   )

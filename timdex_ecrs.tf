@@ -52,7 +52,8 @@ output "mario_prod_promote_workflow" {
     region     = var.aws_region
     role_stage = "${module.ecr_mario.repo_name}-gha-stage"
     role_prod  = "${module.ecr_mario.repo_name}-gha-prod"
-    ecr        = module.ecr_mario.repository_name
+    ecr_stage  = "${module.ecr_mario.repo_name}-stage"
+    ecr_prod   = "${module.ecr_mario.repo_name}-prod"
     }
   )
   description = "Full contents of the prod-promote.yml for the mario repo"
@@ -107,7 +108,8 @@ output "oaiharvester_prod_promote_workflow" {
     region     = var.aws_region
     role_stage = "${module.ecr_oaiharvester.repo_name}-gha-stage"
     role_prod  = "${module.ecr_oaiharvester.repo_name}-gha-prod"
-    ecr        = module.ecr_oaiharvester.repository_name
+    ecr_stage  = "${module.ecr_oaiharvester.repo_name}-stage"
+    ecr_prod   = "${module.ecr_oaiharvester.repo_name}-prod"
     }
   )
   description = "Full contents of the prod-promote.yml for the oaiharvester repo"
@@ -161,7 +163,8 @@ output "transmogrifier_prod_promote_workflow" {
     region     = var.aws_region
     role_stage = "${module.ecr_timdex_transmogrifier.repo_name}-gha-stage"
     role_prod  = "${module.ecr_timdex_transmogrifier.repo_name}-gha-prod"
-    ecr        = module.ecr_timdex_transmogrifier.repository_name
+    ecr_stage  = "${module.ecr_timdex_transmogrifier.repo_name}-stage"
+    ecr_prod   = "${module.ecr_timdex_transmogrifier.repo_name}-prod"
     }
   )
   description = "Full contents of the prod-promote.yml for the transmogrifier repo"
@@ -223,7 +226,8 @@ output "timdex_lambdas_prod_promote_workflow" {
     region     = var.aws_region
     role_stage = "${module.ecr_timdex_lambdas.repo_name}-gha-stage"
     role_prod  = "${module.ecr_timdex_lambdas.repo_name}-gha-prod"
-    ecr        = module.ecr_timdex_lambdas.repository_name
+    ecr_stage  = "${module.ecr_timdex_lambdas.repo_name}-stage"
+    ecr_prod   = "${module.ecr_timdex_lambdas.repo_name}-prod"
     function   = local.ecr_timdex_lambdas_function_name
     }
   )
