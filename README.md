@@ -27,6 +27,10 @@ The [ppod_ecr.tf](./ppod_ecr.tf) is a good example of a single ECR repository fo
 
 **Note**: For Lambda function ECRs, it is imperative that the Infra engineer coordinates with the software engineer to determine the name of the Lambda function as part of the creation of the ECR by this repository.
 
+## For Application Developers
+
+A quick note for application developers and the integration of workflows to automate the deployment of their containerized application to either Fargate or Lambda. When this code is deployed in Terraform Cloud, it generates outputs that contain the caller workflows code as well as the `Makefile` code for their application. Those outputs are accessible to the developers via Terraform Cloud -- they can go into TfC, find the correct Terraform Output, and then copy that text into their application repository.
+
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
 <!-- BEGIN_TF_DOCS -->
