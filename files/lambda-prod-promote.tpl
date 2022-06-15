@@ -14,6 +14,7 @@ jobs:
       AWS_REGION: "${region}"
       GHA_ROLE_STAGE: ${role_stage}
       GHA_ROLE_PROD: ${role_prod}
-      ECR: "${ecr}"
+      ECR_STAGE: "${ecr_stage}"
+      ECR_PROD: "${ecr_prod}"
       FUNCTION: "${function}"
  
