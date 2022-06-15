@@ -58,7 +58,8 @@ output "ppod_prod_promote_workflow" {
     region     = var.aws_region
     role_stage = "${module.ecr_ppod.repo_name}-gha-stage"
     role_prod  = "${module.ecr_ppod.repo_name}-gha-prod"
-    ecr        = module.ecr_ppod.repository_name
+    ecr_stage  = "${module.ecr_ppod.repo_name}-stage"
+    ecr_prod   = "${module.ecr_ppod.repo_name}-prod"
     function   = local.ecr_ppod_function_name
     }
   )
