@@ -58,6 +58,7 @@ A quick note for application developers and the integration of workflows to auto
 | ecr\_ppod | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
+| ecr\_wcd2reshare | ./modules/ecr | n/a |
 
 ## Resources
 
@@ -112,4 +113,8 @@ A quick note for application developers and the integration of workflows to auto
 | transmogrifier\_makefile | Full contents of the Makefile for the transmogrifier repo (allows devs to push to Dev account only) |
 | transmogrifier\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the transmogrifier repo |
 | transmogrifier\_stage\_build\_workflow | Full contents of the stage-build.yml for the transmogrifier repo |
+| wcd2reshare\_dev\_build\_workflow | Full contents of the dev-build.yml for the wcd2reshare repo |
+| wcd2reshare\_makefile | Full contents of the Makefile for the wcd2reshare repo (allows devs to push to Dev account only) |
+| wcd2reshare\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the wcd2reshare repo |
+| wcd2reshare\_stage\_build\_workflow | Full contents of the stage-build.yml for the wcd2reshare repo |
 <!-- END_TF_DOCS -->
