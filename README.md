@@ -57,6 +57,7 @@ A quick note for application developers and the integration of workflows to auto
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
+| ecr\_timdex\_tim | ./modules/ecr | n/a |
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 | ecr\_wcd2reshare | ./modules/ecr | n/a |
 
@@ -105,6 +106,10 @@ A quick note for application developers and the integration of workflows to auto
 | ppod\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
 | ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
 | ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
+| tim\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-index-manager repo |
+| tim\_makefile | Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only) |
+| tim\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-index-manager repo |
+| tim\_stage\_build\_workflow | Full contents of the stage-build.yml for the timdex-index-manager repo |
 | timdex\_lambdas\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-pipeline-lambdas repo |
 | timdex\_lambdas\_makefile | Full contents of the Makefile for the timdex-pipeline-lambdas repo (allows devs to push to Dev account only) |
 | timdex\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-pipeline-lambdas repo |
