@@ -233,3 +233,57 @@ output "timdex_lambdas_prod_promote_workflow" {
   )
   description = "Full contents of the prod-promote.yml for the timdex-pipeline-lambdas repo"
 }
+
+## timdex-index-manager 
+# timdex-index-manager ECR repository
+module "ecr_timdex_tim" {
+  source            = "./modules/ecr"
+  repo_name         = "timdex-index-manager"
+  login_policy_arn  = aws_iam_policy.login.arn
+  oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
+  environment       = var.environment
+  tfoutput_ssm_path = var.tfoutput_ssm_path
+  tags = {
+    app-repo = "timdex-infrastructure-timdex-index-manager"
+  }
+}
+# Outputs in dev
+output "tim_dev_build_workflow" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+    region = var.aws_region
+    role   = module.ecr_timdex_tim.gha_role
+    ecr    = module.ecr_timdex_tim.repository_name
+    }
+  )
+  description = "Full contents of the dev-build.yml for the timdex-index-manager repo"
+}
+output "tim_makefile" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+    ecr_name = module.ecr_timdex_tim.repository_name
+    ecr_url  = module.ecr_timdex_tim.repository_url
+    }
+  )
+  description = "Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only)"
+}
+# Outputs in stage
+output "tim_stage_build_workflow" {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+    region = var.aws_region
+    role   = module.ecr_timdex_tim.gha_role
+    ecr    = module.ecr_timdex_tim.repository_name
+    }
+  )
+  description = "Full contents of the stage-build.yml for the timdex-index-manager repo"
+}
+# Outputs after promotion to prod
+output "tim_prod_promote_workflow" {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+    region     = var.aws_region
+    role_stage = "${module.ecr_timdex_tim.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_timdex_tim.repo_name}-gha-prod"
+    ecr_stage  = "${module.ecr_timdex_tim.repo_name}-stage"
+    ecr_prod   = "${module.ecr_timdex_tim.repo_name}-prod"
+    }
+  )
+  description = "Full contents of the prod-promote.yml for the timdex-index-manager repo"
+}
