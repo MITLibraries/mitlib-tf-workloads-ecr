@@ -53,10 +53,13 @@ A quick note for application developers and the integration of workflows to auto
 |------|--------|---------|
 | ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
 | ecr\_mario | ./modules/ecr | n/a |
+| ecr\_matomo | ./modules/ecr | n/a |
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
+| ecr\_timdex\_tim | ./modules/ecr | n/a |
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
+| ecr\_wcd2reshare | ./modules/ecr | n/a |
 
 ## Resources
 
@@ -91,6 +94,10 @@ A quick note for application developers and the integration of workflows to auto
 | mario\_makefile | Full contents of the Makefile for the mario repo (allows devs to push to Dev account only) |
 | mario\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the mario repo |
 | mario\_stage\_build\_workflow | Full contents of the stage-build.yml for the mario repo |
+| matomo\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the matomo repo |
+| matomo\_fargate\_makefile | Full contents of the Makefile for the matomo repo (allows devs to push to Dev account only) |
+| matomo\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the matomo repo |
+| matomo\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the matomo repo |
 | oaiharvester\_dev\_build\_workflow | Full contents of the dev-build.yml for the oaiharvester repo |
 | oaiharvester\_makefile | Full contents of the Makefile for the oaiharvester repo (allows devs to push to Dev account only) |
 | oaiharvester\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the oaiharvester repo |
@@ -99,6 +106,10 @@ A quick note for application developers and the integration of workflows to auto
 | ppod\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
 | ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
 | ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
+| tim\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-index-manager repo |
+| tim\_makefile | Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only) |
+| tim\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-index-manager repo |
+| tim\_stage\_build\_workflow | Full contents of the stage-build.yml for the timdex-index-manager repo |
 | timdex\_lambdas\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-pipeline-lambdas repo |
 | timdex\_lambdas\_makefile | Full contents of the Makefile for the timdex-pipeline-lambdas repo (allows devs to push to Dev account only) |
 | timdex\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-pipeline-lambdas repo |
@@ -107,4 +118,8 @@ A quick note for application developers and the integration of workflows to auto
 | transmogrifier\_makefile | Full contents of the Makefile for the transmogrifier repo (allows devs to push to Dev account only) |
 | transmogrifier\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the transmogrifier repo |
 | transmogrifier\_stage\_build\_workflow | Full contents of the stage-build.yml for the transmogrifier repo |
+| wcd2reshare\_dev\_build\_workflow | Full contents of the dev-build.yml for the wcd2reshare repo |
+| wcd2reshare\_makefile | Full contents of the Makefile for the wcd2reshare repo (allows devs to push to Dev account only) |
+| wcd2reshare\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the wcd2reshare repo |
+| wcd2reshare\_stage\_build\_workflow | Full contents of the stage-build.yml for the wcd2reshare repo |
 <!-- END_TF_DOCS -->
