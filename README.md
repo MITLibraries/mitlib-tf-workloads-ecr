@@ -52,6 +52,7 @@ A quick note for application developers and the integration of workflows to auto
 | Name | Source | Version |
 |------|--------|---------|
 | ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
+| ecr\_dss | ./modules/ecr | n/a |
 | ecr\_mario | ./modules/ecr | n/a |
 | ecr\_matomo | ./modules/ecr | n/a |
 | ecr\_oaiharvester | ./modules/ecr | n/a |
@@ -60,6 +61,7 @@ A quick note for application developers and the integration of workflows to auto
 | ecr\_timdex\_tim | ./modules/ecr | n/a |
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 | ecr\_wcd2reshare | ./modules/ecr | n/a |
+| ecr\_wiley | ./modules/ecr | n/a |
 
 ## Resources
 
@@ -90,6 +92,10 @@ A quick note for application developers and the integration of workflows to auto
 | alma\_webhook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
 | alma\_webhook\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
 | alma\_webhook\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
+| dss\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the dss repo |
+| dss\_fargate\_makefile | Full contents of the Makefile for the dss repo (allows devs to push to Dev account only) |
+| dss\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dss repo |
+| dss\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the dss repo |
 | mario\_dev\_build\_workflow | Full contents of the dev-build.yml for the mario repo |
 | mario\_makefile | Full contents of the Makefile for the mario repo (allows devs to push to Dev account only) |
 | mario\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the mario repo |
@@ -122,4 +128,8 @@ A quick note for application developers and the integration of workflows to auto
 | wcd2reshare\_makefile | Full contents of the Makefile for the wcd2reshare repo (allows devs to push to Dev account only) |
 | wcd2reshare\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the wcd2reshare repo |
 | wcd2reshare\_stage\_build\_workflow | Full contents of the stage-build.yml for the wcd2reshare repo |
+| wiley\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the wiley-deposits repo |
+| wiley\_fargate\_makefile | Full contents of the Makefile for the wiley-deposits repo (allows devs to push to Dev account only) |
+| wiley\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the wiley-deposits repo |
+| wiley\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the wiley-deposits repo |
 <!-- END_TF_DOCS -->
