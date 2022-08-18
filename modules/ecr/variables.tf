@@ -17,7 +17,7 @@ variable "gh_organization" {
 ## Shared information passed from main code (since modules do not inherit variables/values from the root)
 # The environment (pulled by the root module from TfC variables)
 variable "environment" {
-  description = "The environement (dev, stage, or prod)"
+  description = "The environment (dev, stage, or prod)"
   type        = string
 }
 
