@@ -1,5 +1,5 @@
 ## Container repositories for the GIS stack
-# Geoweb containers
+# Geoweb containers - a DLS-managed Ruby-on-Rails application that is dockerized
 # This is a standard ECR for an ECS with a Fargate launch type
 module "ecr_geoweb" {
   source            = "./modules/ecr"
@@ -10,41 +10,41 @@ module "ecr_geoweb" {
   tfoutput_ssm_path = var.tfoutput_ssm_path
   tags = {
     app-repo   = "geoweb"
-    project-id = "gis-stack"
+    project-id = "gis-services"
   }
 }
 
-# Geoserver containers
+# GeoServer containers - a modification of the official GeoServer Docker container
 # This is a standard ECR for an ECS with a Fargate launch type
 module "ecr_geoserver" {
   source            = "./modules/ecr"
-  repo_name         = "geoserver"
+  repo_name         = "docker-geoserver"
   login_policy_arn  = aws_iam_policy.login.arn
   oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
   environment       = var.environment
   tfoutput_ssm_path = var.tfoutput_ssm_path
   tags = {
-    app-repo   = "geoserver"
-    project-id = "gis-stack"
+    app-repo   = "docker-geoserver"
+    project-id = "gis-services"
   }
 }
 
-# GeoSolr containers
+# GeoSolr containers - a modification of the official Solr Docker container
 # This is a standard ECR for an ECS with a Fargate launch type
 module "ecr_geosolr" {
   source            = "./modules/ecr"
-  repo_name         = "geosolr"
+  repo_name         = "docker-geosolr"
   login_policy_arn  = aws_iam_policy.login.arn
   oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
   environment       = var.environment
   tfoutput_ssm_path = var.tfoutput_ssm_path
   tags = {
-    app-repo   = "geosolr"
-    project-id = "gis-stack"
+    app-repo   = "docker-geosolr"
+    project-id = "gis-services"
   }
 }
 
-# Slingshot containers
+# Slingshot containers - a DLS-managed Python application that is dockerized
 # This is a standard ECR for an ECS with a Fargate launch type
 module "ecr_slingshot" {
   source            = "./modules/ecr"
@@ -55,7 +55,7 @@ module "ecr_slingshot" {
   tfoutput_ssm_path = var.tfoutput_ssm_path
   tags = {
     app-repo   = "slingshot"
-    project-id = "gis-stack"
+    project-id = "gis-services"
   }
 }
 
