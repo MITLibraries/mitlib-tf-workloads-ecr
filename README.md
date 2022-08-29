@@ -38,28 +38,34 @@ A quick note for application developers and the integration of workflows to auto
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.1 |
-| aws | ~> 3.0 |
+| terraform | ~> 1.2 |
+| aws | ~> 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | 3.75.1 |
+| aws | 4.26.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
+| ecr\_dss | ./modules/ecr | n/a |
+| ecr\_geoserver | ./modules/ecr | n/a |
+| ecr\_geosolr | ./modules/ecr | n/a |
+| ecr\_geoweb | ./modules/ecr | n/a |
 | ecr\_mario | ./modules/ecr | n/a |
 | ecr\_matomo | ./modules/ecr | n/a |
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
+| ecr\_slingshot | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
 | ecr\_timdex\_tim | ./modules/ecr | n/a |
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 | ecr\_wcd2reshare | ./modules/ecr | n/a |
+| ecr\_wiley | ./modules/ecr | n/a |
 
 ## Resources
 
@@ -90,6 +96,22 @@ A quick note for application developers and the integration of workflows to auto
 | alma\_webhook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
 | alma\_webhook\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
 | alma\_webhook\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
+| dss\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the dss repo |
+| dss\_fargate\_makefile | Full contents of the Makefile for the dss repo (allows devs to push to Dev account only) |
+| dss\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dss repo |
+| dss\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the dss repo |
+| geoserver\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the geoserver-deposits repo |
+| geoserver\_fargate\_makefile | Full contents of the Makefile for the geoserver-deposits repo (allows devs to push to Dev account only) |
+| geoserver\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geoserver-deposits repo |
+| geoserver\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the geoserver-deposits repo |
+| geosolr\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the geosolr-deposits repo |
+| geosolr\_fargate\_makefile | Full contents of the Makefile for the geosolr-deposits repo (allows devs to push to Dev account only) |
+| geosolr\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geosolr-deposits repo |
+| geosolr\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the geosolr-deposits repo |
+| geoweb\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the geoweb-deposits repo |
+| geoweb\_fargate\_makefile | Full contents of the Makefile for the geoweb-deposits repo (allows devs to push to Dev account only) |
+| geoweb\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geoweb-deposits repo |
+| geoweb\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the geoweb-deposits repo |
 | mario\_dev\_build\_workflow | Full contents of the dev-build.yml for the mario repo |
 | mario\_makefile | Full contents of the Makefile for the mario repo (allows devs to push to Dev account only) |
 | mario\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the mario repo |
@@ -106,6 +128,10 @@ A quick note for application developers and the integration of workflows to auto
 | ppod\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
 | ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
 | ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
+| slingshot\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the slingshot-deposits repo |
+| slingshot\_fargate\_makefile | Full contents of the Makefile for the slingshot-deposits repo (allows devs to push to Dev account only) |
+| slingshot\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the slingshot-deposits repo |
+| slingshot\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the slingshot-deposits repo |
 | tim\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-index-manager repo |
 | tim\_makefile | Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only) |
 | tim\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-index-manager repo |
@@ -122,4 +148,8 @@ A quick note for application developers and the integration of workflows to auto
 | wcd2reshare\_makefile | Full contents of the Makefile for the wcd2reshare repo (allows devs to push to Dev account only) |
 | wcd2reshare\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the wcd2reshare repo |
 | wcd2reshare\_stage\_build\_workflow | Full contents of the stage-build.yml for the wcd2reshare repo |
+| wiley\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the wiley-deposits repo |
+| wiley\_fargate\_makefile | Full contents of the Makefile for the wiley-deposits repo (allows devs to push to Dev account only) |
+| wiley\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the wiley-deposits repo |
+| wiley\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the wiley-deposits repo |
 <!-- END_TF_DOCS -->
