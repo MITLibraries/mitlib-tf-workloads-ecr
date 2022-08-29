@@ -8,14 +8,14 @@ The outputs from the module are stored in Parameter Store in the standard parame
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.1 |
-| aws | ~> 3.0 |
+| terraform | ~> 1.2 |
+| aws | ~> 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.0 |
+| aws | ~> 4.0 |
 
 ## Modules
 
@@ -31,6 +31,7 @@ No modules.
 | [aws_iam_role.gha_this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.gha_ecr_login](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.gha_ecr_rw](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_ssm_parameter.ecr_repository_name](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.ecr_repository_url](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.gha_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
 | [aws_iam_policy_document.gh_trust](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
@@ -40,7 +41,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| environment | The environement (dev, stage, or prod) | `string` | n/a | yes |
+| environment | The environment (dev, stage, or prod) | `string` | n/a | yes |
 | gh\_organization | The name of the GitHub Organization. | `string` | `"MITLibraries"` | no |
 | login\_policy\_arn | The ARN of the shared ECR login policy | `string` | n/a | yes |
 | oidc\_arn | The ARN of the OIDC profile | `string` | n/a | yes |
@@ -50,4 +51,9 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| gha\_role | Github action role used to update the ECR repository |
+| repo\_name | The repo\_name that was passed in to the module for naming purposes |
+| repository\_name | The name of the ECR repository |
+| repository\_url | The URL of the ECR repository |
