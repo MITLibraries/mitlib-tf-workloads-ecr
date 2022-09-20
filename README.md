@@ -1,3 +1,5 @@
+# This is a public repo
+
 # Centralized ECR Repository Creation
 
 This repo builds the ECR (Elastic Container Registry) repositories for containers. Most of the heavy lifting is in an embedded module [modules/ecr/main.tf](./modules/ecr/main.tf).
