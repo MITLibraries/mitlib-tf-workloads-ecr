@@ -46,6 +46,10 @@ resource "aws_iam_openid_connect_provider" "github" {
 ```
 then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openid_connect_provider.github.arn`
 
+## Additional Reference
+
+* https://blog.tedivm.com/guides/2021/10/github-actions-push-to-aws-ecr-without-credentials-oidc/
+* https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-subject-claims
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
