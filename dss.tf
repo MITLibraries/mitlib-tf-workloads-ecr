@@ -17,7 +17,6 @@ module "ecr_dss" {
 }
 
 ## Outputs to Terraform Cloud for devs ##
-
 ## For dss application repo and ECR repository
 # Outputs in dev
 output "dss_fargate_dev_build_workflow" {
