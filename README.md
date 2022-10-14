@@ -117,10 +117,10 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | alma\_webhook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
 | alma\_webhook\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
 | alma\_webhook\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
-| carbon\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the carbon repo |
-| carbon\_fargate\_makefile | Full contents of the Makefile for the carbon repo (allows devs to push to Dev account only) |
-| carbon\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the carbon repo |
-| carbon\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the carbon repo |
+| carbon\_dev\_build\_workflow | Full contents of the dev-build.yml for the carbon repo |
+| carbon\_makefile | Full contents of the Makefile for the carbon repo (allows devs to push to Dev account only) |
+| carbon\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the carbon repo |
+| carbon\_stage\_build\_workflow | Full contents of the stage-build.yml for the carbon repo |
 | dss\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the dss repo |
 | dss\_fargate\_makefile | Full contents of the Makefile for the dss repo (allows devs to push to Dev account only) |
 | dss\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dss repo |
