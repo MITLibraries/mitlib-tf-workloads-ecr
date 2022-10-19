@@ -1,5 +1,5 @@
-### This is the Terraform-generated prod-promote.yml workflow for the ${ecr} app repository. ###
-### If this is a Lambda repo, uncomment the FUNCTION line at the end of the document         ###
+### This is the Terraform-generated prod-promote.yml workflow for the ${ecr_prod} repository. ###
+### If this is a Lambda repo, uncomment the FUNCTION line at the end of the document.         ###
 name: Prod Container Promote
 on:
   workflow_dispatch:
