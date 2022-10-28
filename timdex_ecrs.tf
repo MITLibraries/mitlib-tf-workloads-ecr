@@ -19,9 +19,9 @@ module "ecr_mario" {
 # Outputs in dev
 output "mario_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_mario.gha_role
-    ecr    = module.ecr_mario.repository_name
+    region   = var.aws_region
+    role     = module.ecr_mario.gha_role
+    ecr      = module.ecr_mario.repository_name
     function = ""
     }
   )
@@ -40,9 +40,9 @@ output "mario_makefile" {
 # Outputs in stage
 output "mario_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_mario.gha_role
-    ecr    = module.ecr_mario.repository_name
+    region   = var.aws_region
+    role     = module.ecr_mario.gha_role
+    ecr      = module.ecr_mario.repository_name
     function = ""
     }
   )
@@ -57,7 +57,7 @@ output "mario_prod_promote_workflow" {
     role_prod  = "${module.ecr_mario.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_mario.repo_name}-stage"
     ecr_prod   = "${module.ecr_mario.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the mario repo"
@@ -79,9 +79,9 @@ module "ecr_oaiharvester" {
 # Outputs in dev
 output "oaiharvester_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_oaiharvester.gha_role
-    ecr    = module.ecr_oaiharvester.repository_name
+    region   = var.aws_region
+    role     = module.ecr_oaiharvester.gha_role
+    ecr      = module.ecr_oaiharvester.repository_name
     function = ""
     }
   )
@@ -100,9 +100,9 @@ output "oaiharvester_makefile" {
 # Outputs in stage
 output "oaiharvester_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_oaiharvester.gha_role
-    ecr    = module.ecr_oaiharvester.repository_name
+    region   = var.aws_region
+    role     = module.ecr_oaiharvester.gha_role
+    ecr      = module.ecr_oaiharvester.repository_name
     function = ""
     }
   )
@@ -117,7 +117,7 @@ output "oaiharvester_prod_promote_workflow" {
     role_prod  = "${module.ecr_oaiharvester.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_oaiharvester.repo_name}-stage"
     ecr_prod   = "${module.ecr_oaiharvester.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the oaiharvester repo"
@@ -140,9 +140,9 @@ module "ecr_timdex_transmogrifier" {
 # Outputs in dev
 output "transmogrifier_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_timdex_transmogrifier.gha_role
-    ecr    = module.ecr_timdex_transmogrifier.repository_name
+    region   = var.aws_region
+    role     = module.ecr_timdex_transmogrifier.gha_role
+    ecr      = module.ecr_timdex_transmogrifier.repository_name
     function = ""
     }
   )
@@ -160,9 +160,9 @@ output "transmogrifier_makefile" {
 # Outputs in stage
 output "transmogrifier_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_timdex_transmogrifier.gha_role
-    ecr    = module.ecr_timdex_transmogrifier.repository_name
+    region   = var.aws_region
+    role     = module.ecr_timdex_transmogrifier.gha_role
+    ecr      = module.ecr_timdex_transmogrifier.repository_name
     function = ""
     }
   )
@@ -176,7 +176,7 @@ output "transmogrifier_prod_promote_workflow" {
     role_prod  = "${module.ecr_timdex_transmogrifier.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_timdex_transmogrifier.repo_name}-stage"
     ecr_prod   = "${module.ecr_timdex_transmogrifier.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the transmogrifier repo"
@@ -262,9 +262,9 @@ module "ecr_timdex_tim" {
 # Outputs in dev
 output "tim_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_timdex_tim.gha_role
-    ecr    = module.ecr_timdex_tim.repository_name
+    region   = var.aws_region
+    role     = module.ecr_timdex_tim.gha_role
+    ecr      = module.ecr_timdex_tim.repository_name
     function = ""
     }
   )
@@ -282,9 +282,9 @@ output "tim_makefile" {
 # Outputs in stage
 output "tim_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_timdex_tim.gha_role
-    ecr    = module.ecr_timdex_tim.repository_name
+    region   = var.aws_region
+    role     = module.ecr_timdex_tim.gha_role
+    ecr      = module.ecr_timdex_tim.repository_name
     function = ""
     }
   )
@@ -298,7 +298,7 @@ output "tim_prod_promote_workflow" {
     role_prod  = "${module.ecr_timdex_tim.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_timdex_tim.repo_name}-stage"
     ecr_prod   = "${module.ecr_timdex_tim.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the timdex-index-manager repo"

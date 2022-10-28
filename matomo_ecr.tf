@@ -22,9 +22,9 @@ module "ecr_matomo" {
 # Outputs in dev
 output "matomo_fargate_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_matomo.gha_role
-    ecr    = module.ecr_matomo.repository_name
+    region   = var.aws_region
+    role     = module.ecr_matomo.gha_role
+    ecr      = module.ecr_matomo.repository_name
     function = ""
     }
   )
@@ -43,9 +43,9 @@ output "matomo_fargate_makefile" {
 # Outputs in stage
 output "matomo_fargate_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_matomo.gha_role
-    ecr    = module.ecr_matomo.repository_name
+    region   = var.aws_region
+    role     = module.ecr_matomo.gha_role
+    ecr      = module.ecr_matomo.repository_name
     function = ""
     }
   )
@@ -60,7 +60,7 @@ output "matomo_fargate_prod_promote_workflow" {
     role_prod  = "${module.ecr_matomo.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_matomo.repo_name}-stage"
     ecr_prod   = "${module.ecr_matomo.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the matomo repo"

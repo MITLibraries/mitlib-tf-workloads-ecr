@@ -22,9 +22,9 @@ module "ecr_dss" {
 # Outputs in dev
 output "dss_fargate_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_dss.gha_role
-    ecr    = module.ecr_dss.repository_name
+    region   = var.aws_region
+    role     = module.ecr_dss.gha_role
+    ecr      = module.ecr_dss.repository_name
     function = ""
     }
   )
@@ -43,9 +43,9 @@ output "dss_fargate_makefile" {
 # Outputs in stage
 output "dss_fargate_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_dss.gha_role
-    ecr    = module.ecr_dss.repository_name
+    region   = var.aws_region
+    role     = module.ecr_dss.gha_role
+    ecr      = module.ecr_dss.repository_name
     function = ""
     }
   )
@@ -60,7 +60,7 @@ output "dss_fargate_prod_promote_workflow" {
     role_prod  = "${module.ecr_dss.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_dss.repo_name}-stage"
     ecr_prod   = "${module.ecr_dss.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the dss repo"

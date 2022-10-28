@@ -65,9 +65,9 @@ module "ecr_slingshot" {
 # Outputs in dev
 output "geoweb_fargate_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_geoweb.gha_role
-    ecr    = module.ecr_geoweb.repository_name
+    region   = var.aws_region
+    role     = module.ecr_geoweb.gha_role
+    ecr      = module.ecr_geoweb.repository_name
     function = ""
     }
   )
@@ -86,9 +86,9 @@ output "geoweb_fargate_makefile" {
 # Outputs in stage
 output "geoweb_fargate_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_geoweb.gha_role
-    ecr    = module.ecr_geoweb.repository_name
+    region   = var.aws_region
+    role     = module.ecr_geoweb.gha_role
+    ecr      = module.ecr_geoweb.repository_name
     function = ""
     }
   )
@@ -103,7 +103,7 @@ output "geoweb_fargate_prod_promote_workflow" {
     role_prod  = "${module.ecr_geoweb.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_geoweb.repo_name}-stage"
     ecr_prod   = "${module.ecr_geoweb.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the geoweb-deposits repo"
@@ -113,9 +113,9 @@ output "geoweb_fargate_prod_promote_workflow" {
 # Outputs in dev
 output "geoserver_fargate_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_geoserver.gha_role
-    ecr    = module.ecr_geoserver.repository_name
+    region   = var.aws_region
+    role     = module.ecr_geoserver.gha_role
+    ecr      = module.ecr_geoserver.repository_name
     function = ""
     }
   )
@@ -134,9 +134,9 @@ output "geoserver_fargate_makefile" {
 # Outputs in stage
 output "geoserver_fargate_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_geoserver.gha_role
-    ecr    = module.ecr_geoserver.repository_name
+    region   = var.aws_region
+    role     = module.ecr_geoserver.gha_role
+    ecr      = module.ecr_geoserver.repository_name
     function = ""
     }
   )
@@ -151,7 +151,7 @@ output "geoserver_fargate_prod_promote_workflow" {
     role_prod  = "${module.ecr_geoserver.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_geoserver.repo_name}-stage"
     ecr_prod   = "${module.ecr_geoserver.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the geoserver-deposits repo"
@@ -161,9 +161,9 @@ output "geoserver_fargate_prod_promote_workflow" {
 # Outputs in dev
 output "geosolr_fargate_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_geosolr.gha_role
-    ecr    = module.ecr_geosolr.repository_name
+    region   = var.aws_region
+    role     = module.ecr_geosolr.gha_role
+    ecr      = module.ecr_geosolr.repository_name
     function = ""
     }
   )
@@ -182,9 +182,9 @@ output "geosolr_fargate_makefile" {
 # Outputs in stage
 output "geosolr_fargate_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_geosolr.gha_role
-    ecr    = module.ecr_geosolr.repository_name
+    region   = var.aws_region
+    role     = module.ecr_geosolr.gha_role
+    ecr      = module.ecr_geosolr.repository_name
     function = ""
     }
   )
@@ -199,7 +199,7 @@ output "geosolr_fargate_prod_promote_workflow" {
     role_prod  = "${module.ecr_geosolr.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_geosolr.repo_name}-stage"
     ecr_prod   = "${module.ecr_geosolr.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the geosolr-deposits repo"
@@ -209,9 +209,9 @@ output "geosolr_fargate_prod_promote_workflow" {
 # Outputs in dev
 output "slingshot_fargate_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_slingshot.gha_role
-    ecr    = module.ecr_slingshot.repository_name
+    region   = var.aws_region
+    role     = module.ecr_slingshot.gha_role
+    ecr      = module.ecr_slingshot.repository_name
     function = ""
     }
   )
@@ -230,9 +230,9 @@ output "slingshot_fargate_makefile" {
 # Outputs in stage
 output "slingshot_fargate_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_slingshot.gha_role
-    ecr    = module.ecr_slingshot.repository_name
+    region   = var.aws_region
+    role     = module.ecr_slingshot.gha_role
+    ecr      = module.ecr_slingshot.repository_name
     function = ""
     }
   )
@@ -247,7 +247,7 @@ output "slingshot_fargate_prod_promote_workflow" {
     role_prod  = "${module.ecr_slingshot.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_slingshot.repo_name}-stage"
     ecr_prod   = "${module.ecr_slingshot.repo_name}-prod"
-    function = ""
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the slingshot-deposits repo"
