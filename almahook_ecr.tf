@@ -22,7 +22,7 @@ module "ecr_alma_webhook_lambdas" {
 ## For alma-webhook-lambdas application repo and ECR repository
 # Outputs in dev
 output "alma_webhook_lambdas_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/lambda-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region   = var.aws_region
     role     = module.ecr_alma_webhook_lambdas.gha_role
     ecr      = module.ecr_alma_webhook_lambdas.repository_name
@@ -32,7 +32,7 @@ output "alma_webhook_lambdas_dev_build_workflow" {
   description = "Full contents of the dev-build.yml for the alma-webhook-lambdas repo"
 }
 output "alma_webhook_lambdas_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/lambda-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_alma_webhook_lambdas.repository_name
     ecr_url  = module.ecr_alma_webhook_lambdas.repository_url
     function = local.ecr_alma_webhook_lambdas_function_name
@@ -43,7 +43,7 @@ output "alma_webhook_lambdas_makefile" {
 
 # Outputs in stage
 output "alma_webhook_lambdas_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/lambda-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region   = var.aws_region
     role     = module.ecr_alma_webhook_lambdas.gha_role
     ecr      = module.ecr_alma_webhook_lambdas.repository_name
@@ -55,7 +55,7 @@ output "alma_webhook_lambdas_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "alma_webhook_lambdas_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/lambda-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_alma_webhook_lambdas.repo_name}-gha-stage"
     role_prod  = "${module.ecr_alma_webhook_lambdas.repo_name}-gha-prod"
