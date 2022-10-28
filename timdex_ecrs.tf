@@ -18,18 +18,20 @@ module "ecr_mario" {
 
 # Outputs in dev
 output "mario_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_mario.gha_role
     ecr    = module.ecr_mario.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the mario repo"
 }
 output "mario_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_mario.repository_name
     ecr_url  = module.ecr_mario.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the mario repo (allows devs to push to Dev account only)"
@@ -37,10 +39,11 @@ output "mario_makefile" {
 
 # Outputs in stage
 output "mario_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_mario.gha_role
     ecr    = module.ecr_mario.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the mario repo"
@@ -48,12 +51,13 @@ output "mario_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "mario_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_mario.repo_name}-gha-stage"
     role_prod  = "${module.ecr_mario.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_mario.repo_name}-stage"
     ecr_prod   = "${module.ecr_mario.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the mario repo"
@@ -74,18 +78,20 @@ module "ecr_oaiharvester" {
 }
 # Outputs in dev
 output "oaiharvester_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_oaiharvester.gha_role
     ecr    = module.ecr_oaiharvester.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the oaiharvester repo"
 }
 output "oaiharvester_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_oaiharvester.repository_name
     ecr_url  = module.ecr_oaiharvester.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the oaiharvester repo (allows devs to push to Dev account only)"
@@ -93,10 +99,11 @@ output "oaiharvester_makefile" {
 
 # Outputs in stage
 output "oaiharvester_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_oaiharvester.gha_role
     ecr    = module.ecr_oaiharvester.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the oaiharvester repo"
@@ -104,12 +111,13 @@ output "oaiharvester_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "oaiharvester_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_oaiharvester.repo_name}-gha-stage"
     role_prod  = "${module.ecr_oaiharvester.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_oaiharvester.repo_name}-stage"
     ecr_prod   = "${module.ecr_oaiharvester.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the oaiharvester repo"
@@ -131,40 +139,44 @@ module "ecr_timdex_transmogrifier" {
 }
 # Outputs in dev
 output "transmogrifier_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_timdex_transmogrifier.gha_role
     ecr    = module.ecr_timdex_transmogrifier.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the transmogrifier repo"
 }
 output "transmogrifier_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_timdex_transmogrifier.repository_name
     ecr_url  = module.ecr_timdex_transmogrifier.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the transmogrifier repo (allows devs to push to Dev account only)"
 }
 # Outputs in stage
 output "transmogrifier_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_timdex_transmogrifier.gha_role
     ecr    = module.ecr_timdex_transmogrifier.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the transmogrifier repo"
 }
 # Outputs after promotion to prod
 output "transmogrifier_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_timdex_transmogrifier.repo_name}-gha-stage"
     role_prod  = "${module.ecr_timdex_transmogrifier.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_timdex_transmogrifier.repo_name}-stage"
     ecr_prod   = "${module.ecr_timdex_transmogrifier.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the transmogrifier repo"
@@ -189,7 +201,7 @@ module "ecr_timdex_lambdas" {
 }
 # Outputs in dev
 output "timdex_lambdas_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/lambda-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region   = var.aws_region
     role     = module.ecr_timdex_lambdas.gha_role
     ecr      = module.ecr_timdex_lambdas.repository_name
@@ -199,7 +211,7 @@ output "timdex_lambdas_dev_build_workflow" {
   description = "Full contents of the dev-build.yml for the timdex-pipeline-lambdas repo"
 }
 output "timdex_lambdas_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/lambda-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_timdex_lambdas.repository_name
     ecr_url  = module.ecr_timdex_lambdas.repository_url
     function = local.ecr_timdex_lambdas_function_name
@@ -210,7 +222,7 @@ output "timdex_lambdas_makefile" {
 
 # Outputs in stage
 output "timdex_lambdas_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/lambda-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region   = var.aws_region
     role     = module.ecr_timdex_lambdas.gha_role
     ecr      = module.ecr_timdex_lambdas.repository_name
@@ -222,7 +234,7 @@ output "timdex_lambdas_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "timdex_lambdas_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/lambda-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_timdex_lambdas.repo_name}-gha-stage"
     role_prod  = "${module.ecr_timdex_lambdas.repo_name}-gha-prod"
@@ -249,40 +261,44 @@ module "ecr_timdex_tim" {
 }
 # Outputs in dev
 output "tim_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_timdex_tim.gha_role
     ecr    = module.ecr_timdex_tim.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the timdex-index-manager repo"
 }
 output "tim_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_timdex_tim.repository_name
     ecr_url  = module.ecr_timdex_tim.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only)"
 }
 # Outputs in stage
 output "tim_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_timdex_tim.gha_role
     ecr    = module.ecr_timdex_tim.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the timdex-index-manager repo"
 }
 # Outputs after promotion to prod
 output "tim_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_timdex_tim.repo_name}-gha-stage"
     role_prod  = "${module.ecr_timdex_tim.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_timdex_tim.repo_name}-stage"
     ecr_prod   = "${module.ecr_timdex_tim.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the timdex-index-manager repo"
