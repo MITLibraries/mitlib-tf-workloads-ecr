@@ -64,18 +64,20 @@ module "ecr_slingshot" {
 ## For geoweb application repo and ECR repository
 # Outputs in dev
 output "geoweb_fargate_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_geoweb.gha_role
     ecr    = module.ecr_geoweb.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the geoweb-deposits repo"
 }
 output "geoweb_fargate_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_geoweb.repository_name
     ecr_url  = module.ecr_geoweb.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the geoweb-deposits repo (allows devs to push to Dev account only)"
@@ -83,10 +85,11 @@ output "geoweb_fargate_makefile" {
 
 # Outputs in stage
 output "geoweb_fargate_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_geoweb.gha_role
     ecr    = module.ecr_geoweb.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the geoweb-deposits repo"
@@ -94,12 +97,13 @@ output "geoweb_fargate_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "geoweb_fargate_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_geoweb.repo_name}-gha-stage"
     role_prod  = "${module.ecr_geoweb.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_geoweb.repo_name}-stage"
     ecr_prod   = "${module.ecr_geoweb.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the geoweb-deposits repo"
@@ -108,18 +112,20 @@ output "geoweb_fargate_prod_promote_workflow" {
 ## For geoserver application repo and ECR repository
 # Outputs in dev
 output "geoserver_fargate_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_geoserver.gha_role
     ecr    = module.ecr_geoserver.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the geoserver-deposits repo"
 }
 output "geoserver_fargate_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_geoserver.repository_name
     ecr_url  = module.ecr_geoserver.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the geoserver-deposits repo (allows devs to push to Dev account only)"
@@ -127,10 +133,11 @@ output "geoserver_fargate_makefile" {
 
 # Outputs in stage
 output "geoserver_fargate_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_geoserver.gha_role
     ecr    = module.ecr_geoserver.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the geoserver-deposits repo"
@@ -138,12 +145,13 @@ output "geoserver_fargate_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "geoserver_fargate_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_geoserver.repo_name}-gha-stage"
     role_prod  = "${module.ecr_geoserver.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_geoserver.repo_name}-stage"
     ecr_prod   = "${module.ecr_geoserver.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the geoserver-deposits repo"
@@ -152,18 +160,20 @@ output "geoserver_fargate_prod_promote_workflow" {
 ## For geosolr application repo and ECR repository
 # Outputs in dev
 output "geosolr_fargate_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_geosolr.gha_role
     ecr    = module.ecr_geosolr.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the geosolr-deposits repo"
 }
 output "geosolr_fargate_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_geosolr.repository_name
     ecr_url  = module.ecr_geosolr.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the geosolr-deposits repo (allows devs to push to Dev account only)"
@@ -171,10 +181,11 @@ output "geosolr_fargate_makefile" {
 
 # Outputs in stage
 output "geosolr_fargate_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_geosolr.gha_role
     ecr    = module.ecr_geosolr.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the geosolr-deposits repo"
@@ -182,12 +193,13 @@ output "geosolr_fargate_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "geosolr_fargate_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_geosolr.repo_name}-gha-stage"
     role_prod  = "${module.ecr_geosolr.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_geosolr.repo_name}-stage"
     ecr_prod   = "${module.ecr_geosolr.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the geosolr-deposits repo"
@@ -196,18 +208,20 @@ output "geosolr_fargate_prod_promote_workflow" {
 ## For slingshot application repo and ECR repository
 # Outputs in dev
 output "slingshot_fargate_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region = var.aws_region
     role   = module.ecr_slingshot.gha_role
     ecr    = module.ecr_slingshot.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the slingshot-deposits repo"
 }
 output "slingshot_fargate_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_slingshot.repository_name
     ecr_url  = module.ecr_slingshot.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the slingshot-deposits repo (allows devs to push to Dev account only)"
@@ -215,10 +229,11 @@ output "slingshot_fargate_makefile" {
 
 # Outputs in stage
 output "slingshot_fargate_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region = var.aws_region
     role   = module.ecr_slingshot.gha_role
     ecr    = module.ecr_slingshot.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the slingshot-deposits repo"
@@ -226,12 +241,13 @@ output "slingshot_fargate_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "slingshot_fargate_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_slingshot.repo_name}-gha-stage"
     role_prod  = "${module.ecr_slingshot.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_slingshot.repo_name}-stage"
     ecr_prod   = "${module.ecr_slingshot.repo_name}-prod"
+    function = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the slingshot-deposits repo"
