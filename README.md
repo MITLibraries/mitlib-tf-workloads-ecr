@@ -33,23 +33,26 @@ The [ppod_ecr.tf](./ppod_ecr.tf) is a good example of a single ECR repository fo
 
 A quick note for application developers and the integration of workflows to automate the deployment of their containerized application to either Fargate or Lambda. When this code is deployed in Terraform Cloud, it generates outputs that contain the caller workflows code as well as the `Makefile` code for their application. Those outputs are accessible to the developers via Terraform Cloud -- they can go into TfC, find the correct Terraform Output, and then copy that text into their application repository.
 
-## Making this work in your environment outside of MIT libraries:
-This repository is a part of an ecosystem of components designed to work in our AWS organization.  This component is responsible for a standardized setup of ECR repositories and a build process that goes in github actions and makefiles.  On its own, this repository could be useful to you if you want to emulate how we deploy and promote containers across our AWS accounts, or utilize github OIDC connections for depositing ECR containers to AWS.  Before this will deploy in your environment, you will need an OpenID Connect Provider.  We generate this in our "init" repo, but you could just as easily place it here and reference it directly.  
+## Making this work in your environment outside of MIT libraries
+
+This repository is a part of an ecosystem of components designed to work in our AWS organization.  This component is responsible for a standardized setup of ECR repositories and a build process that goes in Github Actions and Makefiles.  On its own, this repository could be useful to you if you want to emulate how we deploy and promote containers across our AWS accounts, or utilize GitHub OIDC connections for depositing ECR containers to AWS.  Before this will deploy in your environment, you will need an OpenID Connect Provider.  We generate this in our "init" repo, but you could just as easily place it here and reference it directly.  
 
 An example of that infrastructure is:
-```
+
+```terraform
 resource "aws_iam_openid_connect_provider" "github" {
   url             = "https://token.actions.githubusercontent.com"
   client_id_list  = ["sts.amazonaws.com"]
   thumbprint_list = ["6938fd4d98bab03faadb97b34396831e3780aea1"]
 }
 ```
+
 then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openid_connect_provider.github.arn`
 
 ## Additional Reference
 
-* https://blog.tedivm.com/guides/2021/10/github-actions-push-to-aws-ecr-without-credentials-oidc/
-* https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-subject-claims
+* [github-actions-push-to-aws-ecr-without-credentials-oidc](https://blog.tedivm.com/guides/2021/10/github-actions-push-to-aws-ecr-without-credentials-oidc/)
+* [about-security-hardening-with-openid-connect](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-subject-claims)
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -65,7 +68,7 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 
 | Name | Version |
 |------|---------|
-| aws | 4.26.0 |
+| aws | 4.37.0 |
 
 ## Modules
 

@@ -21,18 +21,20 @@ module "ecr_matomo" {
 ## For matomo application repo and ECR repository
 # Outputs in dev
 output "matomo_fargate_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-dev-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_matomo.gha_role
-    ecr    = module.ecr_matomo.repository_name
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_matomo.gha_role
+    ecr      = module.ecr_matomo.repository_name
+    function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the matomo repo"
 }
 output "matomo_fargate_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/fargate-makefile.tpl", {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
     ecr_name = module.ecr_matomo.repository_name
     ecr_url  = module.ecr_matomo.repository_url
+    function = ""
     }
   )
   description = "Full contents of the Makefile for the matomo repo (allows devs to push to Dev account only)"
@@ -40,10 +42,11 @@ output "matomo_fargate_makefile" {
 
 # Outputs in stage
 output "matomo_fargate_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-stage-build.tpl", {
-    region = var.aws_region
-    role   = module.ecr_matomo.gha_role
-    ecr    = module.ecr_matomo.repository_name
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_matomo.gha_role
+    ecr      = module.ecr_matomo.repository_name
+    function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the matomo repo"
@@ -51,12 +54,13 @@ output "matomo_fargate_stage_build_workflow" {
 
 # Outputs after promotion to prod
 output "matomo_fargate_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/fargate-prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
     role_stage = "${module.ecr_matomo.repo_name}-gha-stage"
     role_prod  = "${module.ecr_matomo.repo_name}-gha-prod"
     ecr_stage  = "${module.ecr_matomo.repo_name}-stage"
     ecr_prod   = "${module.ecr_matomo.repo_name}-prod"
+    function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the matomo repo"
