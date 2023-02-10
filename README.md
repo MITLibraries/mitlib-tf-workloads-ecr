@@ -81,7 +81,6 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | ecr\_geoserver | ./modules/ecr | n/a |
 | ecr\_geosolr | ./modules/ecr | n/a |
 | ecr\_geoweb | ./modules/ecr | n/a |
-| ecr\_mario | ./modules/ecr | n/a |
 | ecr\_matomo | ./modules/ecr | n/a |
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_patronload | ./modules/ecr | n/a |
@@ -147,10 +146,6 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | geoweb\_fargate\_makefile | Full contents of the Makefile for the geoweb-deposits repo (allows devs to push to Dev account only) |
 | geoweb\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geoweb-deposits repo |
 | geoweb\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the geoweb-deposits repo |
-| mario\_dev\_build\_workflow | Full contents of the dev-build.yml for the mario repo |
-| mario\_makefile | Full contents of the Makefile for the mario repo (allows devs to push to Dev account only) |
-| mario\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the mario repo |
-| mario\_stage\_build\_workflow | Full contents of the stage-build.yml for the mario repo |
 | matomo\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the matomo repo |
 | matomo\_fargate\_makefile | Full contents of the Makefile for the matomo repo (allows devs to push to Dev account only) |
 | matomo\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the matomo repo |
