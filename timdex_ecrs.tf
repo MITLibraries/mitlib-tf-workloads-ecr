@@ -2,67 +2,6 @@
 ### Timdex related ECR's
 ### 
 
-## mario
-# the mario ECR
-module "ecr_mario" {
-  source            = "./modules/ecr"
-  repo_name         = "mario"
-  login_policy_arn  = aws_iam_policy.login.arn
-  oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
-  environment       = var.environment
-  tfoutput_ssm_path = var.tfoutput_ssm_path
-  tags = {
-    app-repo = "timdex-infrastructure-mario"
-  }
-}
-
-# Outputs in dev
-output "mario_dev_build_workflow" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-    region   = var.aws_region
-    role     = module.ecr_mario.gha_role
-    ecr      = module.ecr_mario.repository_name
-    function = ""
-    }
-  )
-  description = "Full contents of the dev-build.yml for the mario repo"
-}
-output "mario_makefile" {
-  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
-    ecr_name = module.ecr_mario.repository_name
-    ecr_url  = module.ecr_mario.repository_url
-    function = ""
-    }
-  )
-  description = "Full contents of the Makefile for the mario repo (allows devs to push to Dev account only)"
-}
-
-# Outputs in stage
-output "mario_stage_build_workflow" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-    region   = var.aws_region
-    role     = module.ecr_mario.gha_role
-    ecr      = module.ecr_mario.repository_name
-    function = ""
-    }
-  )
-  description = "Full contents of the stage-build.yml for the mario repo"
-}
-
-# Outputs after promotion to prod
-output "mario_prod_promote_workflow" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
-    region     = var.aws_region
-    role_stage = "${module.ecr_mario.repo_name}-gha-stage"
-    role_prod  = "${module.ecr_mario.repo_name}-gha-prod"
-    ecr_stage  = "${module.ecr_mario.repo_name}-stage"
-    ecr_prod   = "${module.ecr_mario.repo_name}-prod"
-    function   = ""
-    }
-  )
-  description = "Full contents of the prod-promote.yml for the mario repo"
-}
-
 ## oaiharvester
 # oaiharvester ECR repo
 module "ecr_oaiharvester" {
