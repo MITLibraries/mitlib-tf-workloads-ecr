@@ -185,3 +185,65 @@ output "sapinvoices_prod_promote_workflow" {
   )
   description = "Full contents of the prod-promote.yml for the alma-sapinvoices repo"
 }
+
+
+################################################################################
+## bursar transfer app
+module "ecr_bursar" {
+  source            = "./modules/ecr"
+  repo_name         = "alma-bursartransfer"
+  login_policy_arn  = aws_iam_policy.login.arn
+  oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
+  environment       = var.environment
+  tfoutput_ssm_path = var.tfoutput_ssm_path
+  tags = {
+    app-repo = "alma-bursartransfer"
+  }
+}
+
+# Outputs in dev
+output "bursar_dev_build_workflow" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_bursar.gha_role
+    ecr      = module.ecr_bursar.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the dev-build.yml for the alma-bursartransfer repo"
+}
+output "bursar_makefile" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
+    ecr_name = module.ecr_bursar.repository_name
+    ecr_url  = module.ecr_bursar.repository_url
+    function = ""
+    }
+  )
+  description = "Full contents of the Makefile for the alma-bursartransfer repo (allows devs to push to Dev account only)"
+}
+
+# Outputs in stage
+output "bursar_stage_build_workflow" {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_bursar.gha_role
+    ecr      = module.ecr_bursar.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the stage-build.yml for the alma-bursartransfer repo"
+}
+
+# Outputs after promotion to prod
+output "bursar_prod_promote_workflow" {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
+    region     = var.aws_region
+    role_stage = "${module.ecr_bursar.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_bursar.repo_name}-gha-prod"
+    ecr_stage  = "${module.ecr_bursar.repo_name}-stage"
+    ecr_prod   = "${module.ecr_bursar.repo_name}-prod"
+    function   = ""
+    }
+  )
+  description = "Full contents of the prod-promote.yml for the alma-bursartransfer repo"
+}
