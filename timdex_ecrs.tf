@@ -185,6 +185,7 @@ output "timdex_lambdas_prod_promote_workflow" {
   description = "Full contents of the prod-promote.yml for the timdex-pipeline-lambdas repo"
 }
 
+
 ## timdex-index-manager 
 # timdex-index-manager ECR repository
 module "ecr_timdex_tim" {
@@ -241,4 +242,63 @@ output "tim_prod_promote_workflow" {
     }
   )
   description = "Full contents of the prod-promote.yml for the timdex-index-manager repo"
+}
+
+
+## browsertrix-harvester
+# browsertrix-harvester ECR repository
+module "ecr_timdex_broswertrix" {
+  source            = "./modules/ecr"
+  repo_name         = "browsertrix-harvester"
+  login_policy_arn  = aws_iam_policy.login.arn
+  oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
+  environment       = var.environment
+  tfoutput_ssm_path = var.tfoutput_ssm_path
+  tags = {
+    app-repo = "timdex-infrastructure-browsertrix"
+  }
+}
+# Outputs in dev
+output "broswertrix_dev_build_workflow" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_timdex_broswertrix.gha_role
+    ecr      = module.ecr_timdex_broswertrix.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the dev-build.yml for the browsertrix-harvester repo"
+}
+output "broswertrix_makefile" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
+    ecr_name = module.ecr_timdex_broswertrix.repository_name
+    ecr_url  = module.ecr_timdex_broswertrix.repository_url
+    function = ""
+    }
+  )
+  description = "Full contents of the Makefile for the browsertrix-harvester repo (allows devs to push to Dev account only)"
+}
+# Outputs in stage
+output "broswertrix_stage_build_workflow" {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_timdex_broswertrix.gha_role
+    ecr      = module.ecr_timdex_broswertrix.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the stage-build.yml for the browsertrix-harvester repo"
+}
+# Outputs after promotion to prod
+output "broswertrix_prod_promote_workflow" {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
+    region     = var.aws_region
+    role_stage = "${module.ecr_timdex_broswertrix.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_timdex_broswertrix.repo_name}-gha-prod"
+    ecr_stage  = "${module.ecr_timdex_broswertrix.repo_name}-stage"
+    ecr_prod   = "${module.ecr_timdex_broswertrix.repo_name}-prod"
+    function   = ""
+    }
+  )
+  description = "Full contents of the prod-promote.yml for the browsertrix-harvester repo"
 }
