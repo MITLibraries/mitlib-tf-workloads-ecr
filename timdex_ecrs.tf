@@ -302,3 +302,62 @@ output "broswertrix_prod_promote_workflow" {
   )
   description = "Full contents of the prod-promote.yml for the browsertrix-harvester repo"
 }
+
+
+## geo-harvester
+# geo-harvester ECR repository
+module "ecr_timdex_geo" {
+  source            = "./modules/ecr"
+  repo_name         = "geo-harvester"
+  login_policy_arn  = aws_iam_policy.login.arn
+  oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
+  environment       = var.environment
+  tfoutput_ssm_path = var.tfoutput_ssm_path
+  tags = {
+    app-repo = "timdex-infrastructure-geo"
+  }
+}
+# Outputs in dev
+output "geo_dev_build_workflow" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_timdex_geo.gha_role
+    ecr      = module.ecr_timdex_geo.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the dev-build.yml for the geo-harvester repo"
+}
+output "geo_makefile" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
+    ecr_name = module.ecr_timdex_geo.repository_name
+    ecr_url  = module.ecr_timdex_geo.repository_url
+    function = ""
+    }
+  )
+  description = "Full contents of the Makefile for the geo-harvester repo (allows devs to push to Dev account only)"
+}
+# Outputs in stage
+output "geo_stage_build_workflow" {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_timdex_geo.gha_role
+    ecr      = module.ecr_timdex_geo.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the stage-build.yml for the geo-harvester repo"
+}
+# Outputs after promotion to prod
+output "geo_prod_promote_workflow" {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
+    region     = var.aws_region
+    role_stage = "${module.ecr_timdex_geo.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_timdex_geo.repo_name}-gha-prod"
+    ecr_stage  = "${module.ecr_timdex_geo.repo_name}-stage"
+    ecr_prod   = "${module.ecr_timdex_geo.repo_name}-prod"
+    function   = ""
+    }
+  )
+  description = "Full contents of the prod-promote.yml for the geo-harvester repo"
+}

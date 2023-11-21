@@ -89,6 +89,7 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | ecr\_sapinvoices | ./modules/ecr | n/a |
 | ecr\_slingshot | ./modules/ecr | n/a |
 | ecr\_timdex\_broswertrix | ./modules/ecr | n/a |
+| ecr\_timdex\_geo | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
 | ecr\_timdex\_tim | ./modules/ecr | n/a |
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
@@ -144,6 +145,10 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | dss\_fargate\_makefile | Full contents of the Makefile for the dss repo (allows devs to push to Dev account only) |
 | dss\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dss repo |
 | dss\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the dss repo |
+| geo\_dev\_build\_workflow | Full contents of the dev-build.yml for the geo-harvester repo |
+| geo\_makefile | Full contents of the Makefile for the geo-harvester repo (allows devs to push to Dev account only) |
+| geo\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geo-harvester repo |
+| geo\_stage\_build\_workflow | Full contents of the stage-build.yml for the geo-harvester repo |
 | geoserver\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the geoserver-deposits repo |
 | geoserver\_fargate\_makefile | Full contents of the Makefile for the geoserver-deposits repo (allows devs to push to Dev account only) |
 | geoserver\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geoserver-deposits repo |
