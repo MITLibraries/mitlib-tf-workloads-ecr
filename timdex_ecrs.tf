@@ -247,7 +247,7 @@ output "tim_prod_promote_workflow" {
 
 ## browsertrix-harvester
 # browsertrix-harvester ECR repository
-module "ecr_timdex_broswertrix" {
+module "ecr_timdex_browsertrix" {
   source            = "./modules/ecr"
   repo_name         = "browsertrix-harvester"
   login_policy_arn  = aws_iam_policy.login.arn
@@ -258,49 +258,74 @@ module "ecr_timdex_broswertrix" {
     app-repo = "timdex-infrastructure-browsertrix"
   }
 }
+# NEED TO FIX THE MISSPELLING!!!
+moved {
+  from = module.ecr_timdex_broswertrix
+  to   = module.ecr_timdex_browsertrix
+}
 # Outputs in dev
-output "broswertrix_dev_build_workflow" {
+output "browsertrix_dev_build_workflow" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
     region   = var.aws_region
-    role     = module.ecr_timdex_broswertrix.gha_role
-    ecr      = module.ecr_timdex_broswertrix.repository_name
+    role     = module.ecr_timdex_browsertrix.gha_role
+    ecr      = module.ecr_timdex_browsertrix.repository_name
     function = ""
     }
   )
   description = "Full contents of the dev-build.yml for the browsertrix-harvester repo"
 }
-output "broswertrix_makefile" {
+# NEED TO FIX THE MISSPELLING!!!
+moved {
+  from = output.broswertrix_dev_build_workflow
+  to   = output.browsertrix_dev_build_workflow
+}
+output "browsertrix_makefile" {
   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
-    ecr_name = module.ecr_timdex_broswertrix.repository_name
-    ecr_url  = module.ecr_timdex_broswertrix.repository_url
+    ecr_name = module.ecr_timdex_browsertrix.repository_name
+    ecr_url  = module.ecr_timdex_browsertrix.repository_url
     function = ""
     }
   )
   description = "Full contents of the Makefile for the browsertrix-harvester repo (allows devs to push to Dev account only)"
 }
+# NEED TO FIX THE MISSPELLING!!!
+moved {
+  from = output.broswertrix_makefile
+  to   = output.browsertrix_makefile
+}
 # Outputs in stage
-output "broswertrix_stage_build_workflow" {
+output "browsertrix_stage_build_workflow" {
   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
     region   = var.aws_region
-    role     = module.ecr_timdex_broswertrix.gha_role
-    ecr      = module.ecr_timdex_broswertrix.repository_name
+    role     = module.ecr_timdex_browsertrix.gha_role
+    ecr      = module.ecr_timdex_browsertrix.repository_name
     function = ""
     }
   )
   description = "Full contents of the stage-build.yml for the browsertrix-harvester repo"
 }
+# NEED TO FIX THE MISSPELLING!!!
+moved {
+  from = output.broswertrix_stage_build_workflow
+  to   = output.browsertrix_stage_build_workflow
+}
 # Outputs after promotion to prod
-output "broswertrix_prod_promote_workflow" {
+output "browsertrix_prod_promote_workflow" {
   value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
     region     = var.aws_region
-    role_stage = "${module.ecr_timdex_broswertrix.repo_name}-gha-stage"
-    role_prod  = "${module.ecr_timdex_broswertrix.repo_name}-gha-prod"
-    ecr_stage  = "${module.ecr_timdex_broswertrix.repo_name}-stage"
-    ecr_prod   = "${module.ecr_timdex_broswertrix.repo_name}-prod"
+    role_stage = "${module.ecr_timdex_browsertrix.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_timdex_browsertrix.repo_name}-gha-prod"
+    ecr_stage  = "${module.ecr_timdex_browsertrix.repo_name}-stage"
+    ecr_prod   = "${module.ecr_timdex_browsertrix.repo_name}-prod"
     function   = ""
     }
   )
   description = "Full contents of the prod-promote.yml for the browsertrix-harvester repo"
+}
+# NEED TO FIX THE MISSPELLING!!!
+moved {
+  from = output.broswertrix_prod_promote_workflow
+  to   = output.browsertrix_prod_promote_workflow
 }
 
 
