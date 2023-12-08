@@ -79,15 +79,11 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | ecr\_carbon | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
 | ecr\_dss | ./modules/ecr | n/a |
-| ecr\_geoserver | ./modules/ecr | n/a |
-| ecr\_geosolr | ./modules/ecr | n/a |
-| ecr\_geoweb | ./modules/ecr | n/a |
 | ecr\_matomo | ./modules/ecr | n/a |
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_patronload | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
 | ecr\_sapinvoices | ./modules/ecr | n/a |
-| ecr\_slingshot | ./modules/ecr | n/a |
 | ecr\_timdex\_browsertrix | ./modules/ecr | n/a |
 | ecr\_timdex\_geo | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
@@ -149,18 +145,6 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | geo\_makefile | Full contents of the Makefile for the geo-harvester repo (allows devs to push to Dev account only) |
 | geo\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geo-harvester repo |
 | geo\_stage\_build\_workflow | Full contents of the stage-build.yml for the geo-harvester repo |
-| geoserver\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the geoserver-deposits repo |
-| geoserver\_fargate\_makefile | Full contents of the Makefile for the geoserver-deposits repo (allows devs to push to Dev account only) |
-| geoserver\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geoserver-deposits repo |
-| geoserver\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the geoserver-deposits repo |
-| geosolr\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the geosolr-deposits repo |
-| geosolr\_fargate\_makefile | Full contents of the Makefile for the geosolr-deposits repo (allows devs to push to Dev account only) |
-| geosolr\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geosolr-deposits repo |
-| geosolr\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the geosolr-deposits repo |
-| geoweb\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the geoweb-deposits repo |
-| geoweb\_fargate\_makefile | Full contents of the Makefile for the geoweb-deposits repo (allows devs to push to Dev account only) |
-| geoweb\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geoweb-deposits repo |
-| geoweb\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the geoweb-deposits repo |
 | matomo\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the matomo repo |
 | matomo\_fargate\_makefile | Full contents of the Makefile for the matomo repo (allows devs to push to Dev account only) |
 | matomo\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the matomo repo |
@@ -181,10 +165,6 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | sapinvoices\_makefile | Full contents of the Makefile for the alma-sapinvoices repo (allows devs to push to Dev account only) |
 | sapinvoices\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-sapinvoices repo |
 | sapinvoices\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-sapinvoices repo |
-| slingshot\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the slingshot-deposits repo |
-| slingshot\_fargate\_makefile | Full contents of the Makefile for the slingshot-deposits repo (allows devs to push to Dev account only) |
-| slingshot\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the slingshot-deposits repo |
-| slingshot\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the slingshot-deposits repo |
 | tim\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-index-manager repo |
 | tim\_makefile | Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only) |
 | tim\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-index-manager repo |
