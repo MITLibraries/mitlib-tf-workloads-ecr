@@ -79,6 +79,7 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | ecr\_carbon | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
 | ecr\_dss | ./modules/ecr | n/a |
+| ecr\_hrqb\_client | ./modules/ecr | n/a |
 | ecr\_matomo | ./modules/ecr | n/a |
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_patronload | ./modules/ecr | n/a |
@@ -145,6 +146,10 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | geo\_makefile | Full contents of the Makefile for the geo-harvester repo (allows devs to push to Dev account only) |
 | geo\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the geo-harvester repo |
 | geo\_stage\_build\_workflow | Full contents of the stage-build.yml for the geo-harvester repo |
+| hrqb\_client\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the hrqb-client repo |
+| hrqb\_client\_fargate\_makefile | Full contents of the Makefile for the hrqb-client repo (allows devs to push to Dev account only) |
+| hrqb\_client\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the hrqb-client repo |
+| hrqb\_client\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the hrqb-client repo |
 | matomo\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the matomo repo |
 | matomo\_fargate\_makefile | Full contents of the Makefile for the matomo repo (allows devs to push to Dev account only) |
 | matomo\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the matomo repo |
