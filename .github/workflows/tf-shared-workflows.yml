@@ -10,6 +10,8 @@ on:
     paths:
       - '**/*.tf'
 
+permissions: read-all
+
 jobs:
   validate:
     name: Validate Terraform
@@ -19,6 +21,6 @@ jobs:
     name: Checkov Tests
     uses: mitlibraries/.github/.github/workflows/tf-checkov-shared.yml@main
 
-  docs-update:
-    name: Update README
-    uses: mitlibraries/.github/.github/workflows/tf-docs-gen-shared.yml@main
+  docs:
+    name: Terraform Docs
+    uses: mitlibraries/.github/.github/workflows/tf-docs-shared.yml@main
