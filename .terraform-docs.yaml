@@ -1,0 +1,5 @@
+formatter: "" # this is required
+
+settings:
+  anchor: false
+  html: false

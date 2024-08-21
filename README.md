@@ -10,6 +10,41 @@ This repo builds the ECR (Elastic Container Registry) repositories for container
 
 The only dependency is the ARN of the OpenID Connect Provider (placed in Parameter Store by the [mitlib-tf-workloads-init](https://github.com/MITLibraries/mitlib-tf-workloads-init) repo).
 
+### Pre-Commit Hooks
+
+For proper linting and checking, this repo uses pre-commit hooks. The following should be installed in the local workstation
+
+* [pre-commit](https://pre-commit.com/)
+* [terraform cli](https://developer.hashicorp.com/terraform/downloads)
+* [terraform-docs](https://terraform-docs.io/)
+* [checkov](https://github.com/bridgecrewio/checkov)
+
+After the first checkout locally, run the following command to initialize the pre-commit hooks.
+
+```bash
+pre-commit install  --hook-type pre-push
+```
+
+It is possible to run the pre-commit hooks manually. To run all the pre-commit hooks for this repo, run
+
+```bash
+pre-commit run --all-files
+```
+
+To run just the checkov checker, run
+
+```bash
+pre-commit run checkov
+```
+
+To run just the `terraform-docs` hook to update the README, run
+
+```bash
+pre-commit run terraform-docs-go
+```
+
+See [.pre-commit-config.yaml](./.pre-commit-config.yaml) for other pre-commit hooks that can be run.
+
 ## Usage
 
 There is a tight relationship between ECR repositories created here and the associated application repositories in GitHub due to the use of OIDC in the GitHub Actions in those application repositories. Make sure to coordinate any new ECR repositories with the developers building the applications that will be published there.
@@ -61,14 +96,14 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.2 |
-| aws | ~> 4.0 |
+| terraform | ~> 1.5 |
+| aws | ~> 5.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | 4.37.0 |
+| aws | 5.62.0 |
 
 ## Modules
 
@@ -85,6 +120,7 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | ecr\_patronload | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
 | ecr\_sapinvoices | ./modules/ecr | n/a |
+| ecr\_sapinvoices\_ui | ./modules/ecr | n/a |
 | ecr\_timdex\_browsertrix | ./modules/ecr | n/a |
 | ecr\_timdex\_geo | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
@@ -170,6 +206,10 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | sapinvoices\_makefile | Full contents of the Makefile for the alma-sapinvoices repo (allows devs to push to Dev account only) |
 | sapinvoices\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-sapinvoices repo |
 | sapinvoices\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-sapinvoices repo |
+| sapinvoices\_ui\_dev\_build\_workflow | Full contents of the dev-build.yml for the alma-sapinvoices-ui repo |
+| sapinvoices\_ui\_makefile | Full contents of the Makefile for the alma-sapinvoices-ui repo (allows devs to push to Dev account only) |
+| sapinvoices\_ui\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-sapinvoices-ui repo |
+| sapinvoices\_ui\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-sapinvoices-ui repo |
 | tim\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-index-manager repo |
 | tim\_makefile | Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only) |
 | tim\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-index-manager repo |
