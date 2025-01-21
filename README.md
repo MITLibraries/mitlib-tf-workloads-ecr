@@ -110,6 +110,7 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | Name | Source | Version |
 |------|--------|---------|
 | ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
+| ecr\_asati | ./modules/ecr | n/a |
 | ecr\_bursar | ./modules/ecr | n/a |
 | ecr\_carbon | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
@@ -158,6 +159,10 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 | alma\_webhook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
 | alma\_webhook\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
 | alma\_webhook\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
+| asati\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the asati repo |
+| asati\_fargate\_makefile | Full contents of the Makefile for the asati repo (allows devs to push to Dev account only) |
+| asati\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the asati repo |
+| asati\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the asati repo |
 | browsertrix\_dev\_build\_workflow | Full contents of the dev-build.yml for the browsertrix-harvester repo |
 | browsertrix\_makefile | Full contents of the Makefile for the browsertrix-harvester repo (allows devs to push to Dev account only) |
 | browsertrix\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the browsertrix-harvester repo |
