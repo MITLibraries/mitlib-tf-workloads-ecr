@@ -5,13 +5,13 @@ locals {
 }
 module "ecr_asati" {
   source            = "./modules/ecr"
-  repo_name         = "docker-asati"
+  repo_name         = "asati"
   login_policy_arn  = aws_iam_policy.login.arn
   oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
   environment       = var.environment
   tfoutput_ssm_path = var.tfoutput_ssm_path
   tags = {
-    app-repo = "docker-asati"
+    app-repo = "asati"
   }
 }
 
