@@ -89,6 +89,44 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 * [github-actions-push-to-aws-ecr-without-credentials-oidc](https://blog.tedivm.com/guides/2021/10/github-actions-push-to-aws-ecr-without-credentials-oidc/)
 * [about-security-hardening-with-openid-connect](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-subject-claims)
 
+
+## Related Assets
+
+This is a core infrastructure repository that defines infrastructure related to ECS, ECR, and Fargate deployments. The following application infrastructure repositories depend on this repository:
+
+* [Alma Hook](https://github.com/MITLibraries/mitlib-tf-workloads-almahook)
+* [Alma Integrations](https://github.com/MITLibraries/mitlib-tf-workloads-patronload)
+    * [Alma Patron Load Application Container](https://github.com/MITLibraries/alma-patronload)
+* [ASATI](https://github.com/MITLibraries/mitlib-tf-workloads-asati)
+    * [ASATI Application Contaier](https://github.com/MITLibraries/asati)
+* [Carbon](https://github.com/MITLibraries/mitlib-tf-workloads-carbon)
+* [DSS](https://github.com/MITLibraries/mitlib-tf-workloads-dss)
+    * [DSpace Submission Service Application Container](https://github.com/MITLibraries/dspace-submission-service)
+    * [ETD](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
+* [HRQB](https://github.com/MITLibraries/mitlib-tf-workloads-hrqb-loader)
+    * [HRQB Client](https://github.com/MITLibraries/hrqb-client)
+* [Matomo](https://github.com/MITLibraries/mitlib-tf-workloads-matomo)
+    * [Matomo Application Container](https://github.com/MITLibraries/docker-matomo)
+* [PPOD](https://github.com/MITLibraries/mitlib-tf-workloads-ppod)
+    * [PPOD Application Container](https://github.com/MITLibraries/ppod)
+* [Timdex](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
+    * [Timdex Application Container](https://github.com/MITLibraries/timdex)
+    * [Timdex Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
+    * [Timdex Index Manager](https://github.com/MITLibraries/timdex-index-manager)
+    * [Timdex Pipeline Lambdas](https://github.com/MITLibraries/timdex-pipeline-lambdas)
+    * [Timdex UI](https://github.com/MITLibraries/timdex-ui)
+    * [Timdex Simulator](https://github.com/MITLibraries/timdex-simulator)
+* [WCD2Reshare](https://github.com/MITLibraries/mitlib-tf-workloads-wcd2reshare)
+    * [WCD2Reshare Appliation Container](https://github.com/MITLibraries/wcd2reshare)
+* [Wiley](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
+    * [Wiley Deposits Application Container](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
+
+## Maintainers
+
+* Owner: See [CODEOWNERS](./.github/CODEOWNERS)
+* Team: See [CODEOWNERS](./.github/CODEOWNERS)
+* Last Maintenance: 2025-01
+
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
 <!-- BEGIN_TF_DOCS -->
