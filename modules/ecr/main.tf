@@ -38,6 +38,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
 ### Read-write permissions ECR repository
 data "aws_iam_policy_document" "rw_this" {
   #checkov:skip=CKV_AWS_111:This policy needs unconstrained CreateRepository privileges
+  #checkov:skip=CKV_AWS_356:This policy should allow "*" as a resource for restrictable actions
   statement {
     actions = [
       "ecr:CreateRepository",
