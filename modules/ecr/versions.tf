@@ -3,7 +3,7 @@
 # Providers themselves are set in the `providers.tf` file.
 
 terraform {
-  required_version = "~> 1.5"
+  required_version = "~> 1.11"
 
   required_providers {
     aws = {

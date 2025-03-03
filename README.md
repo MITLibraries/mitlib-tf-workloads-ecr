@@ -98,8 +98,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 * [Alma Integrations](https://github.com/MITLibraries/mitlib-tf-workloads-patronload)
     * [Alma Patron Load Application Container](https://github.com/MITLibraries/alma-patronload)
 * [ASATI](https://github.com/MITLibraries/mitlib-tf-workloads-asati)
-    * [ASATI Application Contaier](https://github.com/MITLibraries/asati)
+    * [ASATI Application Container](https://github.com/MITLibraries/asati)
 * [Carbon](https://github.com/MITLibraries/mitlib-tf-workloads-carbon)
+* [DSC](https://github.com/MITLibraries/mitlib-tf-workloads-dsc)
+    * [DSC Application Container](https://github.com/MITLibraries/dspace-submission-composer)
 * [DSS](https://github.com/MITLibraries/mitlib-tf-workloads-dss)
     * [DSpace Submission Service Application Container](https://github.com/MITLibraries/dspace-submission-service)
     * [ETD](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
@@ -125,7 +127,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2025-01
+* Last Maintenance: 2025-03
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -134,7 +136,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.5 |
+| terraform | ~> 1.11 |
 | aws | ~> 5.0 |
 
 ## Providers
@@ -152,6 +154,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_bursar | ./modules/ecr | n/a |
 | ecr\_carbon | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
+| ecr\_dsc | ./modules/ecr | n/a |
 | ecr\_dss | ./modules/ecr | n/a |
 | ecr\_hrqb\_client | ./modules/ecr | n/a |
 | ecr\_matomo | ./modules/ecr | n/a |
@@ -217,6 +220,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | creditcardslips\_makefile | Full contents of the Makefile for the alma-creditcardslips repo (allows devs to push to Dev account only) |
 | creditcardslips\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-creditcardslips repo |
 | creditcardslips\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-creditcardslips repo |
+| dsc\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the dsc repo |
+| dsc\_fargate\_makefile | Full contents of the Makefile for the dsc repo (allows devs to push to Dev account only) |
+| dsc\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dsc repo |
+| dsc\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the dsc repo |
 | dss\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the dss repo |
 | dss\_fargate\_makefile | Full contents of the Makefile for the dss repo (allows devs to push to Dev account only) |
 | dss\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dss repo |
