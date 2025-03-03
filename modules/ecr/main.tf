@@ -1,10 +1,10 @@
-################################################################################
-################################################################################
+##############################################################################
+##############################################################################
 # Create the ECR repository to store the ECS image(s) along with a lifecycle 
 # policy.
 resource "aws_ecr_repository" "this" {
   #checkov:skip=CKV_AWS_51:We do not currently use releases for this, but may choose to turn this on in the future
-  #checkov:skip=CKV_AWS_136:We dont store any private information in our images, encyption is unncessary
+  #checkov:skip=CKV_AWS_136:We do not store any private information in our images, encryption is unnecessary
   name = "${var.repo_name}-${var.environment}"
   image_scanning_configuration {
     scan_on_push = true
@@ -14,7 +14,7 @@ resource "aws_ecr_repository" "this" {
 }
 
 resource "aws_ecr_lifecycle_policy" "this" {
-  #checkov:skip=CKV_AWS_136:We dont store any private information in our images, encyption is unncessary 
+  #checkov:skip=CKV_AWS_136:We do not store any private information in our images, encryption is unnecessary 
   #checkov:skip=CKV_AWS_163:We do not use image scanning by AWS right now
   #checkov:skip=CKV_AWS_51:We do not currently use releases for this, but may choose to turn this on in the future
   repository = aws_ecr_repository.this.name
