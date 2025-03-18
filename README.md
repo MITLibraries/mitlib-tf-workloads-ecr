@@ -95,33 +95,36 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 This is a core infrastructure repository that defines infrastructure related to ECS, ECR, and Fargate deployments. The following application infrastructure repositories depend on this repository:
 
 * [Alma Hook](https://github.com/MITLibraries/mitlib-tf-workloads-almahook)
-* [Alma Integrations](https://github.com/MITLibraries/mitlib-tf-workloads-patronload)
-    * [Alma Patron Load Application Container](https://github.com/MITLibraries/alma-patronload)
+  * [Alma Webhook Lambdas](https://github.com/MITLibraries/alma-webhook-lambdas)
+* [Alma Patron Load](https://github.com/MITLibraries/mitlib-tf-workloads-patronload)
+  * [Alma Patron Load Application Container](https://github.com/MITLibraries/alma-patronload)
 * [ASATI](https://github.com/MITLibraries/mitlib-tf-workloads-asati)
-    * [ASATI Application Container](https://github.com/MITLibraries/asati)
+  * [ASATI Application Container](https://github.com/MITLibraries/asati)
 * [Carbon](https://github.com/MITLibraries/mitlib-tf-workloads-carbon)
 * [DSC](https://github.com/MITLibraries/mitlib-tf-workloads-dsc)
-    * [DSC Application Container](https://github.com/MITLibraries/dspace-submission-composer)
+  * [DSC Application Container](https://github.com/MITLibraries/dspace-submission-composer)
 * [DSS](https://github.com/MITLibraries/mitlib-tf-workloads-dss)
-    * [DSpace Submission Service Application Container](https://github.com/MITLibraries/dspace-submission-service)
-    * [ETD](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
+  * [DSpace Submission Service Application Container](https://github.com/MITLibraries/dspace-submission-service)
+  * [ETD](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
 * [HRQB](https://github.com/MITLibraries/mitlib-tf-workloads-hrqb-loader)
-    * [HRQB Client](https://github.com/MITLibraries/hrqb-client)
+  * [HRQB Client](https://github.com/MITLibraries/hrqb-client)
 * [Matomo](https://github.com/MITLibraries/mitlib-tf-workloads-matomo)
-    * [Matomo Application Container](https://github.com/MITLibraries/docker-matomo)
+  * [Matomo Application Container](https://github.com/MITLibraries/docker-matomo)
 * [PPOD](https://github.com/MITLibraries/mitlib-tf-workloads-ppod)
-    * [PPOD Application Container](https://github.com/MITLibraries/ppod)
-* [Timdex](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
-    * [Timdex Application Container](https://github.com/MITLibraries/timdex)
-    * [Timdex Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
-    * [Timdex Index Manager](https://github.com/MITLibraries/timdex-index-manager)
-    * [Timdex Pipeline Lambdas](https://github.com/MITLibraries/timdex-pipeline-lambdas)
-    * [Timdex UI](https://github.com/MITLibraries/timdex-ui)
-    * [Timdex Simulator](https://github.com/MITLibraries/timdex-simulator)
+  * [PPOD Application Container](https://github.com/MITLibraries/ppod)
+* [CDPS](https://github.com/MITLibraries/mitlib-tf-workloads-cdps-storage)
+  * [S3 BagIt Validator](https://github.com/MITLibraries/s3-bagit-validator)
+* [TIMDEX](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
+  * [TIMDEX Application Container](https://github.com/MITLibraries/timdex)
+  * [TIMDEX Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
+  * [TIMDEX Index Manager](https://github.com/MITLibraries/timdex-index-manager)
+  * [TIMDEX Pipeline Lambdas](https://github.com/MITLibraries/timdex-pipeline-lambdas)
+  * [TIMDEX UI](https://github.com/MITLibraries/timdex-ui)
+  * [TIMDEX Simulator](https://github.com/MITLibraries/timdex-simulator)
 * [WCD2Reshare](https://github.com/MITLibraries/mitlib-tf-workloads-wcd2reshare)
-    * [WCD2Reshare Appliation Container](https://github.com/MITLibraries/wcd2reshare)
-* [Wiley](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
-    * [Wiley Deposits Application Container](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
+  * [WCD2Reshare Application Container](https://github.com/MITLibraries/wcd2reshare)
+* **DEPRECATED**: [Wiley](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
+  * **DEPRECATED**: [Wiley Deposits Application Container](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
 
 ## Maintainers
 
@@ -153,6 +156,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_asati | ./modules/ecr | n/a |
 | ecr\_bursar | ./modules/ecr | n/a |
 | ecr\_carbon | ./modules/ecr | n/a |
+| ecr\_cdps\_s3\_bagit\_validator | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
 | ecr\_dsc | ./modules/ecr | n/a |
 | ecr\_dss | ./modules/ecr | n/a |
@@ -252,6 +256,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ppod\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
 | ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
 | ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
+| s3\_bagit\_validator\_dev\_build\_workflow | Full contents of the dev-build.yml for the s3-bagit-validator repo |
+| s3\_bagit\_validator\_makefile | Full contents of the Makefile for the s3-bagit-validator repo (allows devs to push to Dev account only) |
+| s3\_bagit\_validator\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the s3-bagit-validator repo |
+| s3\_bagit\_validator\_stage\_build\_workflow | Full contents of the stage-build.yml for the s3-bagit-validator repo |
 | sapinvoices\_dev\_build\_workflow | Full contents of the dev-build.yml for the alma-sapinvoices repo |
 | sapinvoices\_makefile | Full contents of the Makefile for the alma-sapinvoices repo (allows devs to push to Dev account only) |
 | sapinvoices\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-sapinvoices repo |
