@@ -9,9 +9,7 @@ resource "aws_ssm_parameter" "ecr_repository_name" {
   name        = "${var.tfoutput_ssm_path}/${var.repo_name}/ecr-repository-name"
   value       = aws_ecr_repository.this.name
   description = "The name of the ${var.repo_name} ECR repository"
-  overwrite   = true
-
-  tags = var.tags
+  tags        = var.tags
 }
 
 # ecr repository_url
@@ -23,9 +21,7 @@ resource "aws_ssm_parameter" "ecr_repository_url" {
   name        = "${var.tfoutput_ssm_path}/${var.repo_name}/ecr-repository-url"
   value       = aws_ecr_repository.this.repository_url
   description = "The URL of the ${var.repo_name} ECR repository"
-  overwrite   = true
-
-  tags = var.tags
+  tags        = var.tags
 }
 
 # ecr role so that we can add the updatefunctioncode to it after the lambda itself is created
@@ -37,7 +33,5 @@ resource "aws_ssm_parameter" "gha_role" {
   name        = "${var.tfoutput_ssm_path}/${var.repo_name}/gha-role"
   value       = aws_iam_role.gha_this.name
   description = "Github action role used to update the ${var.repo_name} ECR repository"
-  overwrite   = true
-
-  tags = var.tags
+  tags        = var.tags
 }
