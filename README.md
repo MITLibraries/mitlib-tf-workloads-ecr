@@ -89,7 +89,6 @@ then replace all the ssm parameter references for `oidc_arn` with `aws_iam_openi
 * [github-actions-push-to-aws-ecr-without-credentials-oidc](https://blog.tedivm.com/guides/2021/10/github-actions-push-to-aws-ecr-without-credentials-oidc/)
 * [about-security-hardening-with-openid-connect](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect#example-subject-claims)
 
-
 ## Related Assets
 
 This is a core infrastructure repository that defines infrastructure related to ECS, ECR, and Fargate deployments. The following application infrastructure repositories depend on this repository:
@@ -101,6 +100,9 @@ This is a core infrastructure repository that defines infrastructure related to 
 * [ASATI](https://github.com/MITLibraries/mitlib-tf-workloads-asati)
   * [ASATI Application Container](https://github.com/MITLibraries/asati)
 * [Carbon](https://github.com/MITLibraries/mitlib-tf-workloads-carbon)
+* [CDPS](https://github.com/MITLibraries/mitlib-tf-workloads-cdps-storage)
+  * [S3 BagIt Validator](https://github.com/MITLibraries/s3-bagit-validator)
+  * [CDPS CURT](https://github.com/MITLibraries/cdps-curt)
 * [DSC](https://github.com/MITLibraries/mitlib-tf-workloads-dsc)
   * [DSC Application Container](https://github.com/MITLibraries/dspace-submission-composer)
 * [DSS](https://github.com/MITLibraries/mitlib-tf-workloads-dss)
@@ -112,8 +114,6 @@ This is a core infrastructure repository that defines infrastructure related to 
   * [Matomo Application Container](https://github.com/MITLibraries/docker-matomo)
 * [PPOD](https://github.com/MITLibraries/mitlib-tf-workloads-ppod)
   * [PPOD Application Container](https://github.com/MITLibraries/ppod)
-* [CDPS](https://github.com/MITLibraries/mitlib-tf-workloads-cdps-storage)
-  * [S3 BagIt Validator](https://github.com/MITLibraries/s3-bagit-validator)
 * [TIMDEX](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
   * [TIMDEX Application Container](https://github.com/MITLibraries/timdex)
   * [TIMDEX Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
@@ -156,6 +156,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_asati | ./modules/ecr | n/a |
 | ecr\_bursar | ./modules/ecr | n/a |
 | ecr\_carbon | ./modules/ecr | n/a |
+| ecr\_cdps\_curt | ./modules/ecr | n/a |
 | ecr\_cdps\_s3\_bagit\_validator | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
 | ecr\_dsc | ./modules/ecr | n/a |
@@ -220,6 +221,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | carbon\_makefile | Full contents of the Makefile for the carbon repo (allows devs to push to Dev account only) |
 | carbon\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the carbon repo |
 | carbon\_stage\_build\_workflow | Full contents of the stage-build.yml for the carbon repo |
+| cdps\_curt\_dev\_build\_workflow | Full contents of the dev-build.yml for the cdps-curt repo |
+| cdps\_curt\_makefile | Full contents of the Makefile for the cdps-curt repo (allows devs to push to Dev account only) |
+| cdps\_curt\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the cdps-curt repo |
+| cdps\_curt\_stage\_build\_workflow | Full contents of the stage-build.yml for the cdps-curt repo |
 | creditcardslips\_dev\_build\_workflow | Full contents of the dev-build.yml for the alma-creditcardslips repo |
 | creditcardslips\_makefile | Full contents of the Makefile for the alma-creditcardslips repo (allows devs to push to Dev account only) |
 | creditcardslips\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-creditcardslips repo |
