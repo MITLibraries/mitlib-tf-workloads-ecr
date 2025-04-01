@@ -97,6 +97,8 @@ This is a core infrastructure repository that defines infrastructure related to 
   * [Alma Webhook Lambdas](https://github.com/MITLibraries/alma-webhook-lambdas)
 * [Alma Patron Load](https://github.com/MITLibraries/mitlib-tf-workloads-patronload)
   * [Alma Patron Load Application Container](https://github.com/MITLibraries/alma-patronload)
+* [Archival Packaging Tool](https://github.com/MITLibraries/mitlib-tf-workloads-apt)
+  * [Archival Packaging Tool Application Container](https://github.com/MITLibraries/archival-packaging-tool)
 * [ASATI](https://github.com/MITLibraries/mitlib-tf-workloads-asati)
   * [ASATI Application Container](https://github.com/MITLibraries/asati)
 * [Carbon](https://github.com/MITLibraries/mitlib-tf-workloads-carbon)
@@ -153,6 +155,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | Name | Source | Version |
 |------|--------|---------|
 | ecr\_alma\_webhook\_lambdas | ./modules/ecr | n/a |
+| ecr\_apt | ./modules/ecr | n/a |
 | ecr\_asati | ./modules/ecr | n/a |
 | ecr\_bursar | ./modules/ecr | n/a |
 | ecr\_carbon | ./modules/ecr | n/a |
@@ -205,6 +208,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | alma\_webhook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
 | alma\_webhook\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
 | alma\_webhook\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
+| apt\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the archival-packaging-tool repo |
+| apt\_fargate\_makefile | Full contents of the Makefile for the archival-packaging-tool repo (allows devs to push to Dev account only) |
+| apt\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the archival-packaging-tool repo |
+| apt\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the archival-packaging-tool repo |
 | asati\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the asati repo |
 | asati\_fargate\_makefile | Full contents of the Makefile for the asati repo (allows devs to push to Dev account only) |
 | asati\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the asati repo |
