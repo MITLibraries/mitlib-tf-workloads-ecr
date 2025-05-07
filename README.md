@@ -161,6 +161,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_carbon | ./modules/ecr | n/a |
 | ecr\_cdps\_curt | ./modules/ecr | n/a |
 | ecr\_cdps\_s3\_bagit\_validator | ./modules/ecr | n/a |
+| ecr\_cdps\_s3\_bagit\_validator\_west | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
 | ecr\_dsc | ./modules/ecr | n/a |
 | ecr\_dss | ./modules/ecr | n/a |
