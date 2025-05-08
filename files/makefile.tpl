@@ -20,7 +20,7 @@ publish-dev: dist-dev ## Build, tag and push (intended for developer-based manua
 
 ### If this is a Lambda repo, uncomment the two lines below     ###
 # update-lambda-dev: ## Updates the lambda with whatever is the most recent image in the ecr (intended for developer-based manual update)
-#	aws lambda update-function-code --function-name $(FUNCTION_DEV) --image-uri $(ECR_URL_DEV):latest
+#	aws lambda update-function-code --region us-east-1 --function-name $(FUNCTION_DEV) --image-uri $(ECR_URL_DEV):latest
 
 
 ### Terraform-generated manual shortcuts for deploying to Stage. This requires  ###

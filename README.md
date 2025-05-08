@@ -270,9 +270,13 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
 | ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
 | s3\_bagit\_validator\_dev\_build\_workflow | Full contents of the dev-build.yml for the s3-bagit-validator repo |
+| s3\_bagit\_validator\_dev\_build\_workflow\_west | Additional job for the dev-build.yml for the s3-bagit-validator repo to deploy in us-west-2 |
 | s3\_bagit\_validator\_makefile | Full contents of the Makefile for the s3-bagit-validator repo (allows devs to push to Dev account only) |
+| s3\_bagit\_validator\_makefile\_west | Full contents of the Makefile for the s3-bagit-validator repo (allows devs to push to Dev account only) |
 | s3\_bagit\_validator\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the s3-bagit-validator repo |
+| s3\_bagit\_validator\_prod\_promote\_workflow\_west | Additional job for the prod-promote.yml for the s3-bagit-validator repo to deploy in us-west-2 |
 | s3\_bagit\_validator\_stage\_build\_workflow | Full contents of the stage-build.yml for the s3-bagit-validator repo |
+| s3\_bagit\_validator\_stage\_build\_workflow\_west | Additional job for the stage-build.yml for the s3-bagit-validator repo to deploy in us-west-2 |
 | sapinvoices\_dev\_build\_workflow | Full contents of the dev-build.yml for the alma-sapinvoices repo |
 | sapinvoices\_makefile | Full contents of the Makefile for the alma-sapinvoices repo (allows devs to push to Dev account only) |
 | sapinvoices\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-sapinvoices repo |

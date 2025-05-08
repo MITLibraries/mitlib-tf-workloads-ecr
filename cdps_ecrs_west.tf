@@ -17,50 +17,52 @@ module "ecr_cdps_s3_bagit_validator_west" {
   }
 }
 
-# ## For s3-bagit-validator application repo and ECR repository
-# # Outputs in dev
-# output "s3_bagit_validator_dev_build_workflow_west" {
-#   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build.tpl", {
-#     region   = var.aws_region
-#     role     = module.ecr_cdps_s3_bagit_validator_west.gha_role
-#     ecr      = module.ecr_cdps_s3_bagit_validator_west.repository_name
-#     function = local.ecr_cdps_s3_bagit_validator_function_name
-#     }
-#   )
-#   description = "Full contents of the dev-build.yml for the s3-bagit-validator repo to deploy in us-west-2"
-# }
-# output "s3_bagit_validator_makefile_west" {
-#   value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile.tpl", {
-#     ecr_name = module.ecr_cdps_s3_bagit_validator_west.repository_name
-#     ecr_url  = module.ecr_cdps_s3_bagit_validator_west.repository_url
-#     function = local.ecr_cdps_s3_bagit_validator_function_name
-#     }
-#   )
-#   description = "Full contents of the Makefile for the s3-bagit-validator repo (allows devs to push to Dev account only)"
-# }
+## For s3-bagit-validator application repo and ECR repository in us-west-2
+# Outputs in dev
+output "s3_bagit_validator_dev_build_workflow_west" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build-extra-region.tpl", {
+    region   = "us-west-2"
+    role     = module.ecr_cdps_s3_bagit_validator.gha_role
+    ecr      = module.ecr_cdps_s3_bagit_validator_west.repository_name
+    function = local.ecr_cdps_s3_bagit_validator_function_name
+    }
+  )
+  description = "Additional job for the dev-build.yml for the s3-bagit-validator repo to deploy in us-west-2"
+}
 
-# # Outputs in stage
-# output "s3_bagit_validator_stage_build_workflow_west" {
-#   value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
-#     region   = var.aws_region
-#     role     = module.ecr_cdps_s3_bagit_validator_west.gha_role
-#     ecr      = module.ecr_cdps_s3_bagit_validator_west.repository_name
-#     function = local.ecr_cdps_s3_bagit_validator_function_name
-#     }
-#   )
-#   description = "Full contents of the stage-build.yml for the s3-bagit-validator repo to deploy in us-west-2"
-# }
+output "s3_bagit_validator_makefile_west" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile-extra-region.tpl", {
+    region   = "us-west-2"
+    ecr_name = module.ecr_cdps_s3_bagit_validator_west.repository_name
+    ecr_url  = module.ecr_cdps_s3_bagit_validator_west.repository_url
+    function = local.ecr_cdps_s3_bagit_validator_function_name
+    }
+  )
+  description = "Full contents of the Makefile for the s3-bagit-validator repo (allows devs to push to Dev account only)"
+}
 
-# # Outputs after promotion to prod
-# output "s3_bagit_validator_prod_promote_workflow_west" {
-#   value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
-#     region     = var.aws_region
-#     role_stage = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-gha-stage"
-#     role_prod  = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-gha-prod"
-#     ecr_stage  = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-stage"
-#     ecr_prod   = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-prod"
-#     function   = local.ecr_cdps_s3_bagit_validator_function_name
-#     }
-#   )
-#   description = "Full contents of the prod-promote.yml for the s3-bagit-validator repo to deploy in us-west-2"
-# }
+# Outputs in stage
+output "s3_bagit_validator_stage_build_workflow_west" {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
+    region   = "us-west-2"
+    role     = module.ecr_cdps_s3_bagit_validator.gha_role
+    ecr      = module.ecr_cdps_s3_bagit_validator_west.repository_name
+    function = local.ecr_cdps_s3_bagit_validator_function_name
+    }
+  )
+  description = "Additional job for the stage-build.yml for the s3-bagit-validator repo to deploy in us-west-2"
+}
+
+# Outputs after promotion to prod
+output "s3_bagit_validator_prod_promote_workflow_west" {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
+    region     = "us-west-2"
+    role_stage = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-gha-prod"
+    ecr_stage  = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-stage"
+    ecr_prod   = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-prod"
+    function   = local.ecr_cdps_s3_bagit_validator_function_name
+    }
+  )
+  description = "Additional job for the prod-promote.yml for the s3-bagit-validator repo to deploy in us-west-2"
+}
