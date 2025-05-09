@@ -43,7 +43,7 @@ output "s3_bagit_validator_makefile_west" {
 
 # Outputs in stage
 output "s3_bagit_validator_stage_build_workflow_west" {
-  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build.tpl", {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build-extra-region.tpl", {
     region   = "us-west-2"
     role     = module.ecr_cdps_s3_bagit_validator.gha_role
     ecr      = module.ecr_cdps_s3_bagit_validator_west.repository_name
@@ -55,7 +55,7 @@ output "s3_bagit_validator_stage_build_workflow_west" {
 
 # Outputs after promotion to prod
 output "s3_bagit_validator_prod_promote_workflow_west" {
-  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote.tpl", {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote-extra-region.tpl", {
     region     = "us-west-2"
     role_stage = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-gha-stage"
     role_prod  = "${module.ecr_cdps_s3_bagit_validator_west.repo_name}-gha-prod"
