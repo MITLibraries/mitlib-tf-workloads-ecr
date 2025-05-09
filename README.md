@@ -132,7 +132,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2025-03
+* Last Maintenance: 2025-05
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
