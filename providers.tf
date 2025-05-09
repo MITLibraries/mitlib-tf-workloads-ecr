@@ -24,3 +24,20 @@ provider "aws" {
     }
   }
 }
+
+# Need additional region for multi-region containers
+provider "aws" {
+  alias  = "west-2"
+  region = "us-west-2"
+  default_tags {
+    tags = {
+      project-id   = local.project_id == null ? null : "${local.project_id}"
+      app-id       = var.name
+      environment  = var.environment
+      ou           = var.ou
+      terraform    = "true"
+      infra-repo   = "mitlib-tf-${var.ou}-${var.name}"
+      contains-pii = "false"
+    }
+  }
+}
