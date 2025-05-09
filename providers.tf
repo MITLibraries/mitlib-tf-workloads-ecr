@@ -25,7 +25,7 @@ provider "aws" {
   }
 }
 
-# NEed additional region for multi-region containers
+# Need additional region for multi-region containers
 provider "aws" {
   alias  = "west-2"
   region = "us-west-2"
