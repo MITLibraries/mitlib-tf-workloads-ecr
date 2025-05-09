@@ -1,3 +1,16 @@
+# Embedded ECR Creation Module
+
+Creates the ECR Repository and all the necessary infrastructure glue around it.
+
+## What is created
+
+The following resources are generated when this module is called
+
+* an ECR repository with a lifecycle policy to only store the five (5) most recent containers
+* an IAM Policy providing read/write access to the ECR Repository
+* a trust policy for OIDC connections from GitHub Actions that is tightly coupled to the GitHub repository name
+* an IAM Role for GitHub Actions OIDC connections to AWS
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -29,8 +42,10 @@ No modules.
 | [aws_ssm_parameter.ecr_repository_name](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.ecr_repository_url](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.gha_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.gh_trust](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.rw_this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
 ## Inputs
 

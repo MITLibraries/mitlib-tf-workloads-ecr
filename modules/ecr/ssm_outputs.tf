@@ -29,9 +29,10 @@ resource "aws_ssm_parameter" "ecr_repository_url" {
 resource "aws_ssm_parameter" "gha_role" {
   #checkov:skip=CKV_AWS_337:By default we are not encrypting parameters in tfoutput_ssm_path
   #checkov:skip=CKV2_AWS_34:By default we are not encrypting parameters in tfoutput_ssm_path
+  count       = data.aws_region.current.name == "us-east-1" ? 1 : 0
   type        = "String"
   name        = "${var.tfoutput_ssm_path}/${var.repo_name}/gha-role"
-  value       = aws_iam_role.gha_this.name
+  value       = aws_iam_role.gha_this[0].name
   description = "Github action role used to update the ${var.repo_name} ECR repository"
   tags        = var.tags
 }
