@@ -1,4 +1,4 @@
-### This should be added to jobs section of the dev-build.yml.
+### This should be added to jobs section of the prod-promote.yml.
 ### If this is a Lambda function, uncomment the FUNCTION: line
 
   deploy-${region}:

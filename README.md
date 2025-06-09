@@ -116,6 +116,8 @@ This is a core infrastructure repository that defines infrastructure related to 
   * [Matomo Application Container](https://github.com/MITLibraries/docker-matomo)
 * [PPOD](https://github.com/MITLibraries/mitlib-tf-workloads-ppod)
   * [PPOD Application Container](https://github.com/MITLibraries/ppod)
+* [TACOS](https://github.com/MITLibraries/mitlib-tf-workloads-tacos)
+  * [tacos-detectors-lambdas](https://github.com/MITLibraries/tacos-detectors-lambdas)
 * [TIMDEX](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
   * [TIMDEX Application Container](https://github.com/MITLibraries/timdex)
   * [TIMDEX Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
@@ -132,7 +134,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2025-05
+* Last Maintenance: 2025-06
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -172,6 +174,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_ppod | ./modules/ecr | n/a |
 | ecr\_sapinvoices | ./modules/ecr | n/a |
 | ecr\_sapinvoices\_ui | ./modules/ecr | n/a |
+| ecr\_tacos\_detectors | ./modules/ecr | n/a |
 | ecr\_timdex\_browsertrix | ./modules/ecr | n/a |
 | ecr\_timdex\_geo | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
@@ -209,10 +212,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | alma\_webhook\_lambdas\_makefile | Full contents of the Makefile for the alma-webhook-lambdas repo (allows devs to push to Dev account only) |
 | alma\_webhook\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-webhook-lambdas repo |
 | alma\_webhook\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-webhook-lambdas repo |
-| apt\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the archival-packaging-tool repo |
-| apt\_fargate\_makefile | Full contents of the Makefile for the archival-packaging-tool repo (allows devs to push to Dev account only) |
-| apt\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the archival-packaging-tool repo |
-| apt\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the archival-packaging-tool repo |
+| apt\_dev\_build\_workflow | Full contents of the dev-build.yml for the archival-packaging-tool repo |
+| apt\_makefile | Full contents of the Makefile for the archival-packaging-tool repo (allows devs to push to Dev account only) |
+| apt\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the archival-packaging-tool repo |
+| apt\_stage\_build\_workflow | Full contents of the stage-build.yml for the archival-packaging-tool repo |
 | asati\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the asati repo |
 | asati\_fargate\_makefile | Full contents of the Makefile for the asati repo (allows devs to push to Dev account only) |
 | asati\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the asati repo |
@@ -285,6 +288,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | sapinvoices\_ui\_makefile | Full contents of the Makefile for the alma-sapinvoices-ui repo (allows devs to push to Dev account only) |
 | sapinvoices\_ui\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the alma-sapinvoices-ui repo |
 | sapinvoices\_ui\_stage\_build\_workflow | Full contents of the stage-build.yml for the alma-sapinvoices-ui repo |
+| tacos\_detectors\_dev\_build\_workflow | Full contents of the dev-build.yml for the tacos-detectors-lambdas repo |
+| tacos\_detectors\_makefile | Full contents of the Makefile for the tacos-detectors-lambdas repo (allows devs to push to Dev account only) |
+| tacos\_detectors\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the tacos-detectors-lambdas repo |
+| tacos\_detectors\_stage\_build\_workflow | Full contents of the stage-build.yml for the tacos-detectors-lambdas repo |
 | tim\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-index-manager repo |
 | tim\_makefile | Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only) |
 | tim\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-index-manager repo |
