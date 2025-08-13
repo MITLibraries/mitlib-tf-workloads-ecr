@@ -150,7 +150,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 | Name | Version |
 |------|---------|
-| aws | 5.62.0 |
+| aws | 5.100.0 |
 
 ## Modules
 
