@@ -112,6 +112,9 @@ This is a core infrastructure repository that defines infrastructure related to 
   * [ETD](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
 * [HRQB](https://github.com/MITLibraries/mitlib-tf-workloads-hrqb-loader)
   * [HRQB Client](https://github.com/MITLibraries/hrqb-client)
+* [marimo notebooks](https://github.com/MITLibraries/mitlib-tf-workloads-notebooks)
+  * [marimo-launcher](https://github.com/MITLibraries/marimo-launcher)
+  * [marimo-helloworld](https://github.com/MITLibraries/marimo-helloworld)
 * [Matomo](https://github.com/MITLibraries/mitlib-tf-workloads-matomo)
   * [Matomo Application Container](https://github.com/MITLibraries/docker-matomo)
 * [PPOD](https://github.com/MITLibraries/mitlib-tf-workloads-ppod)
@@ -134,7 +137,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2025-06
+* Last Maintenance: 2025-08
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -150,7 +153,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 | Name | Version |
 |------|---------|
-| aws | 5.62.0 |
+| aws | 5.100.0 |
 
 ## Modules
 
@@ -168,6 +171,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_dsc | ./modules/ecr | n/a |
 | ecr\_dss | ./modules/ecr | n/a |
 | ecr\_hrqb\_client | ./modules/ecr | n/a |
+| ecr\_marimo | ./modules/ecr | n/a |
 | ecr\_matomo | ./modules/ecr | n/a |
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_patronload | ./modules/ecr | n/a |
@@ -256,6 +260,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | hrqb\_client\_fargate\_makefile | Full contents of the Makefile for the hrqb-client repo (allows devs to push to Dev account only) |
 | hrqb\_client\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the hrqb-client repo |
 | hrqb\_client\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the hrqb-client repo |
+| marimo\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the marimo-launcher repo |
+| marimo\_fargate\_makefile | Full contents of the Makefile for the marimo-launcher repo (allows devs to push to Dev account only) |
+| marimo\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the marimo-launcher repo |
+| marimo\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the marimo-launcher repo |
 | matomo\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the matomo repo |
 | matomo\_fargate\_makefile | Full contents of the Makefile for the matomo repo (allows devs to push to Dev account only) |
 | matomo\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the matomo repo |
