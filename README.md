@@ -186,6 +186,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 | ecr\_wcd2reshare | ./modules/ecr | n/a |
 | ecr\_wiley | ./modules/ecr | n/a |
+| ecr\_workflowtest | ./modules/ecr | n/a |
 
 ## Resources
 
@@ -320,4 +321,8 @@ This is a core infrastructure repository that defines infrastructure related to 
 | wiley\_fargate\_makefile | Full contents of the Makefile for the wiley-deposits repo (allows devs to push to Dev account only) |
 | wiley\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the wiley-deposits repo |
 | wiley\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the wiley-deposits repo |
+| workflowtest\_dev\_build\_workflow | Full contents of the dev-build.yml for the ecr-workflow-test repo |
+| workflowtest\_makefile | Full contents of the Makefile for the ecr-workflow-test repo (allows devs to push to Dev account only) |
+| workflowtest\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ecr-workflow-test repo |
+| workflowtest\_stage\_build\_workflow | Full contents of the stage-build.yml for the ecr-workflow-test repo |
 <!-- END_TF_DOCS -->
