@@ -146,7 +146,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.11 |
+| terraform | ~> 1.12 |
 | aws | ~> 5.0 |
 
 ## Providers
