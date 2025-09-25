@@ -60,7 +60,7 @@ For each new ECR repository (or linked collection of ECR repositories), create a
   * a stage_build caller workflow
   * a prod_promote caller workflow
 
-The [ppod_ecr.tf](./ppod_ecr.tf) is a good example of a single ECR repository for a Lambda function build around a containerized app. The [timdex_ecrs.tf](./timdex_ecrs.tf) is a good example of a collection of ECR repositories all linked to one project (and there are both Fargate-linked ECRs and Lambda-linked ECRs in that file).
+The [ppod_ecr.tf](./ppod_ecr.tf) is a good example of a single ECR repository for a Lambda function built around a containerized app. The [timdex_ecrs.tf](./timdex_ecrs.tf) is a good example of a collection of ECR repositories all linked to one project (and there are both Fargate-linked ECRs and Lambda-linked ECRs in that file).
 
 **Note**: For Lambda function ECRs, it is imperative that the Infra engineer coordinates with the software engineer to determine the name of the Lambda function as part of the creation of the ECR by this repository.
 
@@ -96,38 +96,40 @@ This is a core infrastructure repository that defines infrastructure related to 
 * [Alma Hook](https://github.com/MITLibraries/mitlib-tf-workloads-almahook)
   * [Alma Webhook Lambdas](https://github.com/MITLibraries/alma-webhook-lambdas)
 * [Alma Patron Load](https://github.com/MITLibraries/mitlib-tf-workloads-patronload)
-  * [Alma Patron Load Application Container](https://github.com/MITLibraries/alma-patronload)
+  * [Alma Patron Load Application](https://github.com/MITLibraries/alma-patronload)
 * [Archival Packaging Tool](https://github.com/MITLibraries/mitlib-tf-workloads-apt)
-  * [Archival Packaging Tool Application Container](https://github.com/MITLibraries/archival-packaging-tool)
+  * [Archival Packaging Tool Application](https://github.com/MITLibraries/archival-packaging-tool)
 * [ASATI](https://github.com/MITLibraries/mitlib-tf-workloads-asati)
-  * [ASATI Application Container](https://github.com/MITLibraries/asati)
+  * [ASATI Application](https://github.com/MITLibraries/asati)
 * [Carbon](https://github.com/MITLibraries/mitlib-tf-workloads-carbon)
 * [CDPS](https://github.com/MITLibraries/mitlib-tf-workloads-cdps-storage)
   * [S3 BagIt Validator](https://github.com/MITLibraries/s3-bagit-validator)
   * [CDPS CURT](https://github.com/MITLibraries/cdps-curt)
-* [DSC](https://github.com/MITLibraries/mitlib-tf-workloads-dsc)
-  * [DSC Application Container](https://github.com/MITLibraries/dspace-submission-composer)
-* [DSS](https://github.com/MITLibraries/mitlib-tf-workloads-dss)
-  * [DSpace Submission Service Application Container](https://github.com/MITLibraries/dspace-submission-service)
-  * [ETD](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
+* [DSO Infrastructure](https://github.com/MITLibraries/mitlib-tf-workloads-dso)
+  * [DSpace Submission Composer Application](https://github.com/MITLibraries/dspace-submission-composer)
+  * [DSpace Submission Service Application](https://github.com/MITLibraries/dspace-submission-service)
+* **DEPRECATED**: [DSC](https://github.com/MITLibraries/mitlib-tf-workloads-dsc)
+* **DEPRECATED**: [DSS](https://github.com/MITLibraries/mitlib-tf-workloads-dss)
+* [ETD Infrastructure](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
 * [HRQB](https://github.com/MITLibraries/mitlib-tf-workloads-hrqb-loader)
   * [HRQB Client](https://github.com/MITLibraries/hrqb-client)
 * [marimo notebooks](https://github.com/MITLibraries/mitlib-tf-workloads-notebooks)
   * [marimo-launcher](https://github.com/MITLibraries/marimo-launcher)
   * [marimo-helloworld](https://github.com/MITLibraries/marimo-helloworld)
 * [Matomo](https://github.com/MITLibraries/mitlib-tf-workloads-matomo)
-  * [Matomo Application Container](https://github.com/MITLibraries/docker-matomo)
+  * [Matomo Application](https://github.com/MITLibraries/docker-matomo)
 * [PPOD](https://github.com/MITLibraries/mitlib-tf-workloads-ppod)
-  * [PPOD Application Container](https://github.com/MITLibraries/ppod)
+  * [PPOD Application](https://github.com/MITLibraries/ppod)
 * [TACOS](https://github.com/MITLibraries/mitlib-tf-workloads-tacos)
   * [tacos-detectors-lambdas](https://github.com/MITLibraries/tacos-detectors-lambdas)
 * [TIMDEX](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
-  * [TIMDEX Application Container](https://github.com/MITLibraries/timdex)
+  * [TIMDEX Application](https://github.com/MITLibraries/timdex)
   * [TIMDEX Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
   * [TIMDEX Index Manager](https://github.com/MITLibraries/timdex-index-manager)
   * [TIMDEX Pipeline Lambdas](https://github.com/MITLibraries/timdex-pipeline-lambdas)
   * [TIMDEX UI](https://github.com/MITLibraries/timdex-ui)
   * [TIMDEX Simulator](https://github.com/MITLibraries/timdex-simulator)
+  * [TIMDEX Transmogrifier](https://github.com/MITLibraries/transmogrifier)
 * [WCD2Reshare](https://github.com/MITLibraries/mitlib-tf-workloads-wcd2reshare)
   * [WCD2Reshare Application Container](https://github.com/MITLibraries/wcd2reshare)
 * **DEPRECATED**: [Wiley](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
@@ -137,7 +139,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2025-08
+* Last Maintenance: 2025-09
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -146,7 +148,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.11 |
+| terraform | ~> 1.13 |
 | aws | ~> 5.0 |
 
 ## Providers
