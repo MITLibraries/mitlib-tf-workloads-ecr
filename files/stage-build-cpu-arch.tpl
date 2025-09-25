@@ -1,4 +1,4 @@
-### This is the Terraform-generated dev-build.yml workflow for the         ###
+### This is the Terraform-generated stage-build.yml workflow for the         ###
 ### ${ecr} app repository.                                                 ###
 ### If this is a Lambda repo, uncomment the FUNCTION line at the end of    ###
 ### the document. If the container requires any additional pre-build       ###
