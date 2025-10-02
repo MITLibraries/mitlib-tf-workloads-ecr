@@ -26,6 +26,7 @@ dist-dev: check-arch ## Build docker container (intended for developer-based man
 	docker buildx use $(ECR_NAME_DEV); \
 	docker buildx build --platform $(CPU_ARCH) \
 		--load \
+	    --tag $(ECR_URL_DEV):$$ARCH_TAG \
 	    --tag $(ECR_URL_DEV):make-$$ARCH_TAG \
 		--tag $(ECR_URL_DEV):make-$(shell git describe --always) \
 		--tag $(ECR_NAME_DEV):$$ARCH_TAG \
@@ -34,9 +35,11 @@ dist-dev: check-arch ## Build docker container (intended for developer-based man
 publish-dev: dist-dev ## Build, tag and push (intended for developer-based manual publish)
 	@ARCH_TAG=$$(cat .arch_tag); \
 	aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $(ECR_URL_DEV); \
+	docker push $(ECR_URL_DEV):$$ARCH_TAG; \
 	docker push $(ECR_URL_DEV):make-$$ARCH_TAG; \
 	docker push $(ECR_URL_DEV):make-$(shell git describe --always); \
-	docker push $(ECR_URL_DEV):make-$(shell echo $(CPU_ARCH) | cut -d'/' -f2)
+    echo "Cleaning up dangling Docker images..."; \
+    docker image prune -f --filter "dangling=true"
 
 ### If this is a Lambda repo, uncomment the two lines below     ###
 # update-lambda-dev: ## Updates the lambda with whatever is the most recent image in the ecr (intended for developer-based manual update)
@@ -49,9 +52,9 @@ publish-dev: dist-dev ## Build, tag and push (intended for developer-based manua
 docker-clean: ## Clean up Docker detritus
 	@ARCH_TAG=$$(cat .arch_tag); \
 	echo "Cleaning up Docker leftovers (containers, images, builders)"; \
+	docker rmi -f $(ECR_URL_DEV):$$ARCH_TAG; \
 	docker rmi -f $(ECR_URL_DEV):make-$$ARCH_TAG; \
 	docker rmi -f $(ECR_URL_DEV):make-$(shell git describe --always) || true; \
-    docker rmi -f $(ECR_URL_DEV):make-$(shell echo $(CPU_ARCH) | cut -d'/' -f2) || true; \
     docker rmi -f $(ECR_NAME_DEV):$$ARCH_TAG || true; \
 	docker buildx rm $(ECR_NAME_DEV) || true
 	@rm -rf .arch_tag
