@@ -130,6 +130,7 @@ This is a core infrastructure repository that defines infrastructure related to 
   * [TIMDEX UI](https://github.com/MITLibraries/timdex-ui)
   * [TIMDEX Simulator](https://github.com/MITLibraries/timdex-simulator)
   * [TIMDEX Transmogrifier](https://github.com/MITLibraries/transmogrifier)
+  * [TIMDEX Embeddings](https://github.com/MITLibraries/timdex-embeddings)
 * [WCD2Reshare](https://github.com/MITLibraries/mitlib-tf-workloads-wcd2reshare)
   * [WCD2Reshare Application Container](https://github.com/MITLibraries/wcd2reshare)
 * **DEPRECATED**: [Wiley](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
@@ -139,7 +140,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2025-09
+* Last Maintenance: 2025-11
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -182,6 +183,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_sapinvoices\_ui | ./modules/ecr | n/a |
 | ecr\_tacos\_detectors | ./modules/ecr | n/a |
 | ecr\_timdex\_browsertrix | ./modules/ecr | n/a |
+| ecr\_timdex\_embeddings | ./modules/ecr | n/a |
 | ecr\_timdex\_geo | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
 | ecr\_timdex\_tim | ./modules/ecr | n/a |
@@ -307,6 +309,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | tim\_makefile | Full contents of the Makefile for the timdex-index-manager repo (allows devs to push to Dev account only) |
 | tim\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-index-manager repo |
 | tim\_stage\_build\_workflow | Full contents of the stage-build.yml for the timdex-index-manager repo |
+| timdex\_embeddings\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-embeddings repo |
+| timdex\_embeddings\_fargate\_makefile | Full contents of the Makefile for the timdex-embeddings repo (allows devs to push to Dev account only) |
+| timdex\_embeddings\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-embeddings repo |
+| timdex\_embeddings\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the timdex-embeddings repo |
 | timdex\_lambdas\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-pipeline-lambdas repo |
 | timdex\_lambdas\_makefile | Full contents of the Makefile for the timdex-pipeline-lambdas repo (allows devs to push to Dev account only) |
 | timdex\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-pipeline-lambdas repo |

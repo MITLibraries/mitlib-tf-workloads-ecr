@@ -365,3 +365,68 @@ output "geo_prod_promote_workflow" {
   )
   description = "Full contents of the prod-promote.yml for the geo-harvester repo"
 }
+
+
+# timdex-embeddings containers
+# This is a standard ECR for an ECS with a Fargate launch type
+module "ecr_timdex_embeddings" {
+  source            = "./modules/ecr"
+  repo_name         = "timdex-embeddings"
+  login_policy_arn  = aws_iam_policy.login.arn
+  oidc_arn          = data.aws_ssm_parameter.oidc_arn.value
+  environment       = var.environment
+  tfoutput_ssm_path = var.tfoutput_ssm_path
+  tags = {
+    app-repo = "timdex-infrastructure-timdex-embeddings"
+  }
+}
+
+## Outputs to Terraform Cloud for devs ##
+
+## For timdex-embeddings application repo and ECR repository
+# Outputs in dev
+output "timdex_embeddings_fargate_dev_build_workflow" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/dev-build-cpu-arch.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_timdex_embeddings.gha_role
+    ecr      = module.ecr_timdex_embeddings.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the dev-build.yml for the timdex-embeddings repo"
+}
+output "timdex_embeddings_fargate_makefile" {
+  value = var.environment == "prod" || var.environment == "stage" ? null : templatefile("${path.module}/files/makefile-cpu-arch.tpl", {
+    ecr_name = module.ecr_timdex_embeddings.repository_name
+    ecr_url  = module.ecr_timdex_embeddings.repository_url
+    function = ""
+    }
+  )
+  description = "Full contents of the Makefile for the timdex-embeddings repo (allows devs to push to Dev account only)"
+}
+
+# Outputs in stage
+output "timdex_embeddings_fargate_stage_build_workflow" {
+  value = var.environment == "prod" || var.environment == "dev" ? null : templatefile("${path.module}/files/stage-build-cpu-arch.tpl", {
+    region   = var.aws_region
+    role     = module.ecr_timdex_embeddings.gha_role
+    ecr      = module.ecr_timdex_embeddings.repository_name
+    function = ""
+    }
+  )
+  description = "Full contents of the stage-build.yml for the timdex-embeddings repo"
+}
+
+# Outputs after promotion to prod
+output "timdex_embeddings_fargate_prod_promote_workflow" {
+  value = var.environment == "stage" || var.environment == "dev" ? null : templatefile("${path.module}/files/prod-promote-cpu-arch.tpl", {
+    region     = var.aws_region
+    role_stage = "${module.ecr_timdex_embeddings.repo_name}-gha-stage"
+    role_prod  = "${module.ecr_timdex_embeddings.repo_name}-gha-prod"
+    ecr_stage  = "${module.ecr_timdex_embeddings.repo_name}-stage"
+    ecr_prod   = "${module.ecr_timdex_embeddings.repo_name}-prod"
+    function   = ""
+    }
+  )
+  description = "Full contents of the prod-promote.yml for the timdex-embeddings repo"
+}
