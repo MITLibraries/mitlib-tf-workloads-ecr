@@ -140,7 +140,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2025-11
+* Last Maintenance: 2026-02
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -149,7 +149,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.13 |
+| terraform | ~> 1.14 |
 | aws | ~> 5.0 |
 
 ## Providers
