@@ -40,7 +40,7 @@ resource "aws_ecr_lifecycle_policy" "this" {
 data "aws_iam_policy_document" "rw_this" {
   #checkov:skip=CKV_AWS_111:This policy needs unconstrained CreateRepository privileges
   #checkov:skip=CKV_AWS_356:This policy should allow "*" as a resource for restrictable actions
-  count = data.aws_region.current.name == "us-east-1" ? 1 : 0
+  count = data.aws_region.current.region == "us-east-1" ? 1 : 0
   statement {
     actions = [
       "ecr:CreateRepository",
@@ -75,7 +75,7 @@ data "aws_iam_policy_document" "rw_this" {
 }
 
 resource "aws_iam_policy" "rw_this" {
-  count       = data.aws_region.current.name == "us-east-1" ? 1 : 0
+  count       = data.aws_region.current.region == "us-east-1" ? 1 : 0
   name        = "${var.repo_name}-ecr-rw-${var.environment}"
   description = "policy to allow read/write into ${var.repo_name} ECR"
   policy      = data.aws_iam_policy_document.rw_this[0].json
@@ -86,7 +86,7 @@ resource "aws_iam_policy" "rw_this" {
 # The trust policy that allows GitHub Actions OIDC-based connections from the 
 # repository. The definition is explicitly linked to the name of the GitHub repo. 
 data "aws_iam_policy_document" "gh_trust" {
-  count = data.aws_region.current.name == "us-east-1" ? 1 : 0
+  count = data.aws_region.current.region == "us-east-1" ? 1 : 0
   statement {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     principals {
@@ -108,7 +108,7 @@ data "aws_iam_policy_document" "gh_trust" {
 
 # Role for GitHub Action OIDC connections from the lambdas repository
 resource "aws_iam_role" "gha_this" {
-  count              = data.aws_region.current.name == "us-east-1" ? 1 : 0
+  count              = data.aws_region.current.region == "us-east-1" ? 1 : 0
   name               = "${var.repo_name}-gha-${var.environment}"
   assume_role_policy = data.aws_iam_policy_document.gh_trust[0].json
 
@@ -116,12 +116,12 @@ resource "aws_iam_role" "gha_this" {
 }
 
 resource "aws_iam_role_policy_attachment" "gha_ecr_rw" {
-  count      = data.aws_region.current.name == "us-east-1" ? 1 : 0
+  count      = data.aws_region.current.region == "us-east-1" ? 1 : 0
   role       = aws_iam_role.gha_this[0].name
   policy_arn = aws_iam_policy.rw_this[0].arn
 }
 resource "aws_iam_role_policy_attachment" "gha_ecr_login" {
-  count      = data.aws_region.current.name == "us-east-1" ? 1 : 0
+  count      = data.aws_region.current.region == "us-east-1" ? 1 : 0
   role       = aws_iam_role.gha_this[0].name
   policy_arn = var.login_policy_arn
 }

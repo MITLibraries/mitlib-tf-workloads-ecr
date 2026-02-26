@@ -17,7 +17,7 @@ output "repository_url" {
 # ecr role so that we can add the updatefunctioncode to it after the lambda itself is created
 output "gha_role" {
   description = "Github action role used to update the ECR repository"
-  value       = data.aws_region.current.name == "us-east-1" ? aws_iam_role.gha_this[0].name : null
+  value       = data.aws_region.current.region == "us-east-1" ? aws_iam_role.gha_this[0].name : null
   sensitive   = false
 }
 
