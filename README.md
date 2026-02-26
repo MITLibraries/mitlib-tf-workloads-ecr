@@ -108,8 +108,6 @@ This is a core infrastructure repository that defines infrastructure related to 
 * [DSO Infrastructure](https://github.com/MITLibraries/mitlib-tf-workloads-dso)
   * [DSpace Submission Composer Application](https://github.com/MITLibraries/dspace-submission-composer)
   * [DSpace Submission Service Application](https://github.com/MITLibraries/dspace-submission-service)
-* **DEPRECATED**: [DSC](https://github.com/MITLibraries/mitlib-tf-workloads-dsc)
-* **DEPRECATED**: [DSS](https://github.com/MITLibraries/mitlib-tf-workloads-dss)
 * [ETD Infrastructure](https://github.com/MITLibraries/mitlib-tf-workloads-etd)
 * [HRQB](https://github.com/MITLibraries/mitlib-tf-workloads-hrqb-loader)
   * [HRQB Client](https://github.com/MITLibraries/hrqb-client)
@@ -120,17 +118,20 @@ This is a core infrastructure repository that defines infrastructure related to 
   * [Matomo Application](https://github.com/MITLibraries/docker-matomo)
 * [PPOD](https://github.com/MITLibraries/mitlib-tf-workloads-ppod)
   * [PPOD Application](https://github.com/MITLibraries/ppod)
+* [Quepid](https://github.com/MITLibraries/mitlib-tf-workloads-quepid)
+  * [Quepid Application](https://github.com/MITLibraries/quepid)
 * [TACOS](https://github.com/MITLibraries/mitlib-tf-workloads-tacos)
   * [tacos-detectors-lambdas](https://github.com/MITLibraries/tacos-detectors-lambdas)
 * [TIMDEX](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
   * [TIMDEX Application](https://github.com/MITLibraries/timdex)
   * [TIMDEX Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
+  * [TIMDEX Embeddings](https://github.com/MITLibraries/timdex-embeddings)
   * [TIMDEX Index Manager](https://github.com/MITLibraries/timdex-index-manager)
   * [TIMDEX Pipeline Lambdas](https://github.com/MITLibraries/timdex-pipeline-lambdas)
-  * [TIMDEX UI](https://github.com/MITLibraries/timdex-ui)
+  * [TIMDEX Semantic Builder](https://github.com/MITLibraries/timdex-semantic-builder)
   * [TIMDEX Simulator](https://github.com/MITLibraries/timdex-simulator)
   * [TIMDEX Transmogrifier](https://github.com/MITLibraries/transmogrifier)
-  * [TIMDEX Embeddings](https://github.com/MITLibraries/timdex-embeddings)
+  * [TIMDEX UI](https://github.com/MITLibraries/timdex-ui)
 * [WCD2Reshare](https://github.com/MITLibraries/mitlib-tf-workloads-wcd2reshare)
   * [WCD2Reshare Application Container](https://github.com/MITLibraries/wcd2reshare)
 * **DEPRECATED**: [Wiley](https://github.com/MITLibraries/mitlib-tf-workloads-wiley)
@@ -140,7 +141,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2026-02
+* Last Maintenance: 2026-03
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -150,13 +151,13 @@ This is a core infrastructure repository that defines infrastructure related to 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.14 |
-| aws | ~> 5.0 |
+| aws | ~> 6.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | 5.100.0 |
+| aws | 6.35.0 |
 
 ## Modules
 
@@ -179,6 +180,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_oaiharvester | ./modules/ecr | n/a |
 | ecr\_patronload | ./modules/ecr | n/a |
 | ecr\_ppod | ./modules/ecr | n/a |
+| ecr\_quepid | ./modules/ecr | n/a |
 | ecr\_sapinvoices | ./modules/ecr | n/a |
 | ecr\_sapinvoices\_ui | ./modules/ecr | n/a |
 | ecr\_tacos\_detectors | ./modules/ecr | n/a |
@@ -186,6 +188,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_timdex\_embeddings | ./modules/ecr | n/a |
 | ecr\_timdex\_geo | ./modules/ecr | n/a |
 | ecr\_timdex\_lambdas | ./modules/ecr | n/a |
+| ecr\_timdex\_semantic\_builder | ./modules/ecr | n/a |
 | ecr\_timdex\_tim | ./modules/ecr | n/a |
 | ecr\_timdex\_transmogrifier | ./modules/ecr | n/a |
 | ecr\_wcd2reshare | ./modules/ecr | n/a |
@@ -285,6 +288,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ppod\_makefile | Full contents of the Makefile for the ppod repo (allows devs to push to Dev account only) |
 | ppod\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the ppod repo |
 | ppod\_stage\_build\_workflow | Full contents of the stage-build.yml for the ppod repo |
+| quepid\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the quepid repo |
+| quepid\_fargate\_makefile | Full contents of the Makefile for the quepid repo (allows devs to push to Dev account only) |
+| quepid\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the quepid repo |
+| quepid\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the quepid repo |
 | s3\_bagit\_validator\_dev\_build\_workflow | Full contents of the dev-build.yml for the s3-bagit-validator repo |
 | s3\_bagit\_validator\_dev\_build\_workflow\_west | Additional job for the dev-build.yml for the s3-bagit-validator repo to deploy in us-west-2 |
 | s3\_bagit\_validator\_makefile | Full contents of the Makefile for the s3-bagit-validator repo (allows devs to push to Dev account only) |
@@ -317,6 +324,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | timdex\_lambdas\_makefile | Full contents of the Makefile for the timdex-pipeline-lambdas repo (allows devs to push to Dev account only) |
 | timdex\_lambdas\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-pipeline-lambdas repo |
 | timdex\_lambdas\_stage\_build\_workflow | Full contents of the stage-build.yml for the timdex-pipeline-lambdas repo |
+| timdex\_semantic\_builder\_lambda\_dev\_build\_workflow | Full contents of the dev-build.yml for the timdex-semantic-builder repo |
+| timdex\_semantic\_builder\_lambda\_makefile | Full contents of the Makefile for the timdex-semantic-builder repo (allows devs to push to Dev account only) |
+| timdex\_semantic\_builder\_lambda\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the timdex-semantic-builder repo |
+| timdex\_semantic\_builder\_lambda\_stage\_build\_workflow | Full contents of the stage-build.yml for the timdex-semantic-builder repo |
 | transmogrifier\_dev\_build\_workflow | Full contents of the dev-build.yml for the transmogrifier repo |
 | transmogrifier\_makefile | Full contents of the Makefile for the transmogrifier repo (allows devs to push to Dev account only) |
 | transmogrifier\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the transmogrifier repo |
