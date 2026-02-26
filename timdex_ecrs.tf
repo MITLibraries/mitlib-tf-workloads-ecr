@@ -2,6 +2,8 @@
 ### Timdex related ECR's
 ### 
 
+
+##############################################################################
 ## oaiharvester
 # oaiharvester ECR repo
 module "ecr_oaiharvester" {
@@ -63,6 +65,7 @@ output "oaiharvester_prod_promote_workflow" {
 }
 
 
+##############################################################################
 ## transmogrifier 
 # transmogrifier ECR repository
 module "ecr_timdex_transmogrifier" {
@@ -121,7 +124,7 @@ output "transmogrifier_prod_promote_workflow" {
   description = "Full contents of the prod-promote.yml for the transmogrifier repo"
 }
 
-
+##############################################################################
 ## timdex-pipeline-lambdas
 # Since this is a Lambda function, we need to set the function name now in order to build the correct files.
 locals {
@@ -186,6 +189,7 @@ output "timdex_lambdas_prod_promote_workflow" {
 }
 
 
+##############################################################################
 ## timdex-index-manager 
 # timdex-index-manager ECR repository
 module "ecr_timdex_tim" {
@@ -245,6 +249,7 @@ output "tim_prod_promote_workflow" {
 }
 
 
+##############################################################################
 ## browsertrix-harvester
 # browsertrix-harvester ECR repository
 module "ecr_timdex_browsertrix" {
@@ -308,6 +313,7 @@ output "browsertrix_prod_promote_workflow" {
 }
 
 
+##############################################################################
 ## geo-harvester
 # geo-harvester ECR repository
 module "ecr_timdex_geo" {
@@ -367,6 +373,7 @@ output "geo_prod_promote_workflow" {
 }
 
 
+##############################################################################
 # timdex-embeddings containers
 # This is a standard ECR for an ECS with a Fargate launch type
 module "ecr_timdex_embeddings" {
