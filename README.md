@@ -125,6 +125,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 * [TIMDEX](https://github.com/MITLibraries/mitlib-tf-workloads-timdex-infrastructure)
   * [TIMDEX Application](https://github.com/MITLibraries/timdex)
   * [TIMDEX Dataset API](https://github.com/MITLibraries/timdex-dataset-api)
+  * [TIMDES DSpace Fulltext Harvester](https://github.com/MITLibraries/dspace-fulltext-harvester)
   * [TIMDEX Embeddings](https://github.com/MITLibraries/timdex-embeddings)
   * [TIMDEX Index Manager](https://github.com/MITLibraries/timdex-index-manager)
   * [TIMDEX Pipeline Lambdas](https://github.com/MITLibraries/timdex-pipeline-lambdas)
@@ -141,7 +142,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 
 * Owner: See [CODEOWNERS](./.github/CODEOWNERS)
 * Team: See [CODEOWNERS](./.github/CODEOWNERS)
-* Last Maintenance: 2026-03
+* Last Maintenance: 2026-05
 
 ## TF markdown is automatically inserted at the bottom of this file, nothing should be written beyond this point
 
@@ -173,6 +174,7 @@ This is a core infrastructure repository that defines infrastructure related to 
 | ecr\_cdps\_s3\_bagit\_validator\_west | ./modules/ecr | n/a |
 | ecr\_creditcardslips | ./modules/ecr | n/a |
 | ecr\_dsc | ./modules/ecr | n/a |
+| ecr\_dspace\_fulltext\_harvester | ./modules/ecr | n/a |
 | ecr\_dss | ./modules/ecr | n/a |
 | ecr\_hrqb\_client | ./modules/ecr | n/a |
 | ecr\_marimo | ./modules/ecr | n/a |
@@ -256,6 +258,10 @@ This is a core infrastructure repository that defines infrastructure related to 
 | dsc\_fargate\_makefile | Full contents of the Makefile for the dsc repo (allows devs to push to Dev account only) |
 | dsc\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dsc repo |
 | dsc\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the dsc repo |
+| dspace\_fulltext\_harvester\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the dspace-fulltext-harvester repo |
+| dspace\_fulltext\_harvester\_fargate\_makefile | Full contents of the Makefile for the dspace-fulltext-harvester repo (allows devs to push to Dev account only) |
+| dspace\_fulltext\_harvester\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dspace-fulltext-harvester repo |
+| dspace\_fulltext\_harvester\_fargate\_stage\_build\_workflow | Full contents of the stage-build.yml for the dspace-fulltext-harvester repo |
 | dss\_fargate\_dev\_build\_workflow | Full contents of the dev-build.yml for the dss repo |
 | dss\_fargate\_makefile | Full contents of the Makefile for the dss repo (allows devs to push to Dev account only) |
 | dss\_fargate\_prod\_promote\_workflow | Full contents of the prod-promote.yml for the dss repo |
