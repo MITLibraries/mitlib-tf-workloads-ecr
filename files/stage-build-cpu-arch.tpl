@@ -19,42 +19,14 @@ permissions:
   contents: read
 
 jobs:
-  prep:
-    name: Prep for Build
-    runs-on: ubuntu-latest
-    outputs: 
-      cpuarch: $${{ steps.setarch.outputs.cpuarch }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Set CPU Architecture
-        id: setarch
-        run: |
-          echo "### :abacus: Architecture Selection" >> $GITHUB_STEP_SUMMARY
-          if [[ -f .aws-architecture ]]; then
-            ARCH=$(cat .aws-architecture)
-            echo "\`$ARCH\` was read from \`.aws-architecture\` and passed to the deploy job." >> $GITHUB_STEP_SUMMARY
-          else
-            ARCH="linux/amd64"
-            echo "No \`.aws-architecture\` file, so default \`$ARCH\` was passed to the deploy job." >> $GITHUB_STEP_SUMMARY
-          fi
-          if [[ "$ARCH" != "linux/arm64" && "$ARCH" != "linux/amd64" ]]; then
-            echo "$ARCH is INVALID architecture!"
-            echo "$ARCH is INVALID architecture!" >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi
-          echo "cpuarch=$ARCH" >> $GITHUB_OUTPUT
-
-  deploy:
-    needs: prep
-    name: Stage Deploy
+  build-push:
+    name: Stage Build and Push
     uses: mitlibraries/.github/.github/workflows/ecr-multi-arch-deploy-stage.yml@main
     secrets: inherit
     with:
       AWS_REGION: "${region}"
       GHA_ROLE: "${role}"
       ECR: "${ecr}"
-      CPU_ARCH: $${{ needs.prep.outputs.cpuarch }}
+      # DOCKERFILE: # only if the name of the Dockerfile is not "Dockerfile"!
       # FUNCTION: "${function}"
       # PREBUILD: 

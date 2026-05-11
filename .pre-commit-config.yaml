@@ -7,12 +7,12 @@ repos:
           - --args=-recursive
       - id: terraform_validate
   - repo: https://github.com/terraform-docs/terraform-docs
-    rev: "v0.21.0"
+    rev: "v0.23.0"
     hooks:
       - id: terraform-docs-go
         args: ["markdown", "table", "--config", "./.terraform-docs.yaml", "--recursive", "--output-file", "README.md", "./"]
   - repo: https://github.com/bridgecrewio/checkov.git
-    rev: '3.2.500'
+    rev: '3.2.526'
     hooks:
       - id: checkov
         verbose: false

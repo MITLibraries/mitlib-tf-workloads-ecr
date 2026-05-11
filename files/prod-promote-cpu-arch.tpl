@@ -14,36 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  prep:
-    name: Prep for Promote
-    runs-on: ubuntu-latest
-    outputs: 
-      cpuarch: $${{ steps.setarch.outputs.cpuarch }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Set CPU Architecture
-        id: setarch
-        run: |
-          echo "### :abacus: Architecture Selection" >> $GITHUB_STEP_SUMMARY
-          if [[ -f .aws-architecture ]]; then
-            ARCH=$(cat .aws-architecture)
-            echo "\`$ARCH\` was read from \`.aws-architecture\` and passed to the deploy job." >> $GITHUB_STEP_SUMMARY
-          else
-            ARCH="linux/amd64"
-            echo "No \`.aws-architecture\` file, so default \`$ARCH\` was passed to the deploy job." >> $GITHUB_STEP_SUMMARY
-          fi
-          if [[ "$ARCH" != "linux/arm64" && "$ARCH" != "linux/amd64" ]]; then
-            echo "$ARCH is INVALID architecture!"
-            echo "$ARCH is INVALID architecture!" >> $GITHUB_STEP_SUMMARY
-            exit 1
-          fi
-          echo "cpuarch=$ARCH" >> $GITHUB_OUTPUT
-
   deploy:
-    needs: prep
-    name: Deploy
+    name: Prod promote
     uses: mitlibraries/.github/.github/workflows/ecr-multi-arch-promote-prod.yml@main
     secrets: inherit
     with:
@@ -52,6 +24,6 @@ jobs:
       GHA_ROLE_PROD: ${role_prod}
       ECR_STAGE: "${ecr_stage}"
       ECR_PROD: "${ecr_prod}"
-      CPU_ARCH: $${{ needs.prep.outputs.cpuarch }}
+      # DEFAULT_BRANCH: # Only if the default branch is not "main"!
       # FUNCTION: "${function}"
  
