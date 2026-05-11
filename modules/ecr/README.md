@@ -15,15 +15,15 @@ The following resources are generated when this module is called
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | terraform | ~> 1.14 |
 | aws | ~> 6.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
-| aws | 5.62.0 |
+| ---- | ------- |
+| aws | 6.44.0 |
 
 ## Modules
 
@@ -32,7 +32,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [aws_ecr_lifecycle_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository) | resource |
 | [aws_iam_policy.rw_this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
@@ -50,7 +50,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | environment | The environment (dev, stage, or prod) | `string` | n/a | yes |
 | gh\_organization | The name of the GitHub Organization. | `string` | `"MITLibraries"` | no |
 | login\_policy\_arn | The ARN of the shared ECR login policy | `string` | n/a | yes |
@@ -62,7 +62,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | gha\_role | Github action role used to update the ECR repository |
 | repo\_name | The repo\_name that was passed in to the module for naming purposes |
 | repository\_name | The name of the ECR repository |
